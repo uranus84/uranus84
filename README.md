@@ -34,6 +34,8 @@
 - Passport
 - body-parser
 - Axios
+- Mocha
+- Chai
 
 
 ## Development

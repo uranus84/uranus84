@@ -21,15 +21,20 @@
 
 ## Usage
 
-> Just use it.
+> Used for managing chores for people and/or households. Allows a user to set up to-do tasks that will repeat on a regular basis decided by the user. Tasks can be edited and deleted as need be. Groups can be set and individual users can see other group members' tasks and assign tasks to people in their group.
 
 ## Requirements
 
-- Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node
+- Express
+- React
+- MySQL
+- Webpack
+- babel
+- Passport
+- body-parser
+- Axios
+
 
 ## Development
 
@@ -45,7 +50,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](https://docs.google.com/document/d/1qkj5RUlLufCYJJWWY28gFMsIbMZBBht_lyf2UORHNSE/edit)
 
 
 ## Contributing

@@ -1,13 +1,13 @@
-# Project Name
+# Chore App Project (name pending)
 
-> Pithy project description
+> This is a reminders app for your chores.
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Kaiser Wu
+  - Andy Qi
+  - Amy Loftus
+  - Tejaswi Guvvala
 
 ## Table of Contents
 
@@ -21,7 +21,7 @@
 
 ## Usage
 
-> Some usage instructions
+> Just use it.
 
 ## Requirements
 

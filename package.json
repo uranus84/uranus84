@@ -9,13 +9,14 @@
     "npm": "5.5.1"
   },
   "scripts": {
-    "start": "webpack --watch",
-    "server": "nodemon server/index.js"
+    "build": "webpack",
+    "start": "node server/index.js"
   },
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "html-webpack-plugin": "^2.30.1",
     "mysql": "^2.15.0",
     "path": "^0.12.7",
     "react": "^16.1.1",

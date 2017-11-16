@@ -12,7 +12,15 @@
     "start": "webpack --watch",
     "server": "nodemon server/index.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/uranus84/uranus84"

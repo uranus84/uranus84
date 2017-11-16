@@ -9,8 +9,8 @@
     "npm": "5.5.1"
   },
   "scripts": {
-    "start": "webpack --watch",
-    "server": "nodemon server/index.js"
+    "build": "webpack",
+    "start": "node server/index.js"
   },
   "dependencies": {
     "axios": "^0.17.1",

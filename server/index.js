@@ -1,12 +1,17 @@
-var express = require('express');
-var app = express();
- 
-var port = process.env.PORT || 8080;
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express()
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-});
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
-app.listen(port, function() {
-	console.log('Our app is running on http://localhost:' + port);
-});
+app.use(express.static(__dirname + './../'));
+
+app.get('/', (req, res) => res.send('Server Message!'))
+
+app.get('/test', (req, res) => {
+  console.log('test get gotten');
+  res.send('Get request success!');
+})
+
+app.listen(3000, () => console.log('Example app listening on port 3000!'))

@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "build:dev": "webpack -d --watch",
     "lint": "eslint client && eslint database && eslint server",
     "start": "node server/index.js"
   },

@@ -12,7 +12,7 @@ app.get('/', (req, res) => res.send('Server Message!'));
 app.get('/test', (req, res) => {
   console.log('test get gotten');
   res.send('Get request success!');
-})
+});
 
-let port = process.env.PORT;
+let port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

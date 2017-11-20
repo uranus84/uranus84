@@ -1,3 +1,6 @@
 # webpack build
 webpack.config.js
 dist/bundle.js
+
+#tests
+test/

@@ -1,7 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+
+const passportLocal = require('../database/passport.js');
+
 const app = express();
 
+app.use(require('express-session')({
+  secret: 'Shh, secret!',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.intialize());
+app.use(passport.session());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 

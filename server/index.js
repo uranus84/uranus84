@@ -36,9 +36,5 @@ app.get('/test', (req, res) => {
 });
 
 // Spin it up
-<<<<<<< HEAD
 let port = process.env.PORT || 3000;
-=======
-let port = process.env.PORT || 8000;
->>>>>>> Fix some server index syntax, bugs to be fixed
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -22,6 +22,7 @@ module.exports = {
       "jest/globals": true
     }, 
     "rules": {
-      "import/extensions": "off"
+      "import/extensions": "off",
+      "react/prop-types": "off"
     }
 };

@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-var session = require('express-session');
+const session = require('express-session');
 const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
 
 require('../database/passport.js')(passport);
 
@@ -19,7 +20,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
-app.use(passport.intialize());
+app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
@@ -35,5 +36,9 @@ app.get('/test', (req, res) => {
 });
 
 // Spin it up
+<<<<<<< HEAD
 let port = process.env.PORT || 3000;
+=======
+let port = process.env.PORT || 8000;
+>>>>>>> Fix some server index syntax, bugs to be fixed
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

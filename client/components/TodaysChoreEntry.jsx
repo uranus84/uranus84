@@ -1,7 +1,14 @@
 import React from 'react';
+import moment from 'moment';
 
-function TodaysChoreEntry(props) {
-  return (<div chores={props.chores}>Todays Chore Entry component</div>);
+function TodaysChoreEntry({ chore }) {
+  return (
+    <div className="row todays-chore-entry">
+      <input className="done" type="checkbox" checked={chore.completed} />
+      <span className="chore-name">{chore.chore_name}</span>
+      <span className="chore-last-done">{moment(chore.last_date_completed).calendar()}</span>
+    </div>
+  );
 }
 
 export default TodaysChoreEntry;

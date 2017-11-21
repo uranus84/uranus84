@@ -29,3 +29,6 @@ bower_components/
 
 # heroku local environment
 .env
+
+# package-lock.json is ignored. Please npm install every time you incorporate new master changes.
+package-lock.json

@@ -1,18 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import FutureChoreEntry from './FutureChoreEntry.jsx';
 
 function FutureChores(props) {
   return (
-    <div className="future-chores-list">
-      <h3>Future Chores</h3>
+    <div className="container future-chores-list">
+      <div className="row">
+        <h3>Tomorrow and Beyond</h3>
+      </div>
       {props.chores.map((chore, index) => <FutureChoreEntry chore={chore} key={index} />)}
     </div>
   );
 }
-
-FutureChores.propTypes = {
-  chores: PropTypes.array.isRequired,
-};
 
 export default FutureChores;

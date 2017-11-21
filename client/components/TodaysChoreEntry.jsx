@@ -1,18 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import moment from 'moment';
 
 function TodaysChoreEntry({ chore }) {
   return (
-    <div className="todays-chore-entry">
-      <span>{chore.chore_name}</span>
-      <span>{chore.next_date}</span>
-      <span>{chore.frequency}</span>
+    <div className="row todays-chore-entry">
+      <input className="done" type="checkbox" />
+      <span className="chore-name">{chore.chore_name}</span>
+      <span className="chore-last-done">{moment(chore.last_date_completed).calendar()}</span>
     </div>
   );
 }
-
-TodaysChoreEntry.propTypes = {
-  chore: PropTypes.object.isRequired,
-};
 
 export default TodaysChoreEntry;

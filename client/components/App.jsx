@@ -13,46 +13,46 @@ class App extends React.Component {
       todaysChores: [
         {
           chore_name: 'Wash dishes',
-          next_date: Date.now(),
+          next_date: '2017-11-19 09:00:00',
           frequency: 'daily',
-          last_date_completed: Date.now(),
+          last_date_completed: '2017-11-18 09:00:00',
           completed: false,
         },
         {
           chore_name: 'do laundry',
-          next_date: Date.now(),
+          next_date: '2017-11-19 09:00:00',
           frequency: 'weekly',
-          last_date_completed: Date.now(),
+          last_date_completed: '2017-11-18 09:00:00',
           completed: false,
         },
         {
           chore_name: 'Vacuum',
-          next_date: Date.now(),
+          next_date: '2017-11-19 09:00:00',
           frequency: 'weekly',
-          last_date_completed: Date.now(),
+          last_date_completed: '2017-11-18 09:00:00',
           completed: false,
         },
       ],
       futureChores: [
         {
           chore_name: 'take out trash',
-          next_date: Date.now(),
+          next_date: '2017-12-19 09:00:00',
           frequency: 'daily',
-          last_date_completed: Date.now(),
+          last_date_completed: '2017-11-18 09:00:00',
           completed: false,
         },
         {
           chore_name: 'change sheets',
-          next_date: Date.now(),
+          next_date: '2017-12-19 09:00:00',
           frequency: 'weekly',
-          last_date_completed: Date.now(),
+          last_date_completed: '2017-11-18 09:00:00',
           completed: false,
         },
         {
           chore_name: 'clean toilet',
-          next_date: Date.now(),
-          frequency: 'weekly',
-          last_date_completed: Date.now(),
+          next_date: '2017-12-19 09:00:00',
+          frequency: 'daily',
+          last_date_completed: '2017-11-18 09:00:00',
           completed: false,
         },
       ],
@@ -74,9 +74,16 @@ class App extends React.Component {
     console.log('rendering');
     // this.testGetReq();
     return (
-      <div>
-        <TodaysChores chores={this.state.todaysChores} />
-        <FutureChores chores={this.state.futureChores} />
+      <div className="container">
+        <div className="row">
+          <h1>Household Management</h1>
+        </div>
+        <div className="row">
+          <TodaysChores chores={this.state.todaysChores} />
+        </div>
+        <div className="row">
+          <FutureChores chores={this.state.futureChores} />
+        </div>
       </div>
     );
   }

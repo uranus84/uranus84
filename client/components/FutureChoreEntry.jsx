@@ -4,7 +4,7 @@ import moment from 'moment';
 function FutureChoreEntry({ chore }) {
   return (
     <div className="row future-chore-entry">
-      <input className="done" type="checkbox" />
+      <input className="done" type="checkbox" checked={chore.completed} />
       <span className="chore-name">{chore.chore_name}</span>
       <span className="chore-freq">{chore.frequency}</span>
       <span className="chore-due">{moment(chore.next_date_due).calendar()}</span>

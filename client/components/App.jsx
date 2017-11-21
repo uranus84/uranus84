@@ -13,7 +13,7 @@ class App extends React.Component {
           next_date: '2017-11-19 09:00:00',
           frequency: 'daily',
           last_date_completed: '2017-11-18 09:00:00',
-          completed: false,
+          completed: true,
         },
         {
           chore_name: 'do laundry',

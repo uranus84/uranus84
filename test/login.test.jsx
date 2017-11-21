@@ -17,12 +17,12 @@ describe('<Login />', () => {
 		expect(wrapper.state().password).to.exist;
   });
   it('component should update state when login button is clicked', () => {
-		wrapper.ref('username').get(0).value = 'foo';
-		wrapper.ref('password').get(0).value = 'bar';
+		wrapper.find('#username').simulate('change', {target: {value: 'foo'}});
+    wrapper.find('#password').simulate('change', {target: {value: 'bar'}});
 		const p = wrapper.find('form');
 		p.simulate('submit');
-		expect(wrapper.ref('username').get(0).value).to.equal('foo');
-		expect(wrapper.ref('password').get(0).value).to.equal('bar');
+		expect(wrapper.state().username).to.equal('foo');
+		expect(wrapper.state().username).to.equal('bar');
   });
   it('component should submit a get request when login button is clicked', () => {
 

@@ -1,4 +1,5 @@
 const express = require('express');
+
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
@@ -31,7 +32,7 @@ app.use(express.static(__dirname + './../'));
 app.get('/', (req, res) => res.send('Server Message!'));
 
 app.get('/test', (req, res) => {
-  console.log('test get gotten');
+	console.log('im success im server');
   res.send('Get request success!');
 });
 

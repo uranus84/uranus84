@@ -30,6 +30,7 @@
     "path": "^0.12.7",
     "react": "^16.1.1",
     "react-datetime": "^2.11.0",
+    "react-day-picker": "^6.2.1",
     "react-dom": "^16.1.1"
   },
   "repository": {

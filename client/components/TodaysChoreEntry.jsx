@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 function TodaysChoreEntry({ chore, index, handleCompletion }) {
+  console.log(chore.next_date_due);
   return (
     <div className="row todays-chore-entry">
       <input
@@ -12,7 +13,7 @@ function TodaysChoreEntry({ chore, index, handleCompletion }) {
       />
       <span className="chore-name">{chore.chore_name} |</span>
       <span className="chore-last-done">
-        | Last Completed {moment(chore.next_date_due)
+        | Last Completed {moment(chore.last_date_completed)
           .calendar(null, {
             lastDay: '[Yesterday]',
             sameDay: '[Today]',

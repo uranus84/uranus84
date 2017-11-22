@@ -13,7 +13,7 @@ function FutureChoreEntry({ chore, index, handleCompletion }) {
       <span className="chore-name">{chore.chore_name} |</span>
       <span className="chore-freq">| {chore.frequency} |</span>
       <span className="chore-due">
-        | Due {moment(chore.next_date_due)
+        | Due {moment(chore.next_date)
           .calendar(null, {
             lastDay: '[Yesterday]',
             sameDay: '[Today]',

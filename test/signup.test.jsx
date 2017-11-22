@@ -6,14 +6,14 @@ import sinon from 'sinon';
 import Adapter from 'enzyme-adapter-react-16';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import Login from '../client/components/Login.jsx';
+import Signup from '../client/components/Signup.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 let mock = new MockAdapter(axios);
 
-describe('<Login />', () => {
-  const wrapper = mount(<Login />);
+describe('<Signup />', () => {
+  const wrapper = mount(<Signup />);
   it('component should initialize a username and password state', () => {
 		expect(wrapper.state().username).to.exist;
 		expect(wrapper.state().password).to.exist;
@@ -24,8 +24,8 @@ describe('<Login />', () => {
 		expect(wrapper.state().username).to.equal('foo');
 		expect(wrapper.state().password).to.equal('bar');
   });
-  it('component should redirect if user and password is found', () => {
-    mock.onPost('/login').reply(200,
+  it('component should redirect if username and password combination are found and respond with homepage states', () => {
+    mock.onPost('/signup').reply(200,
       {
         username: 'Bob Dylan',
         todaysChores: [
@@ -48,7 +48,7 @@ describe('<Login />', () => {
         ]
       }
     );
-    wrapper.instance().submitLoginCredentials().then((response) => {
+    wrapper.instance().signupNewUser().then((response) => {
       expect(response.status).toEqual(200);
       expect(response.username).toEqual('Bob Dylan');
       expect(response.todaysChores[0].chore_name).toEqual('Wash dishes');
@@ -56,17 +56,10 @@ describe('<Login />', () => {
     });
   });
   it('component should handle errors if user and password is not found', () => {
-    mock.onPost('/login').reply(500, {error: 'User is not found'});
-    wrapper.instance().submitLoginCredentials().then((response) => {
+    mock.onPost('/signup').reply(500, {error: 'User is not found'});
+    wrapper.instance().signupNewUser().then((response) => {
       expect(response.status).toEqual(500);
       expect(response.error).toEqual('User is not found');
-    });
-  });
-  it('component should redirect when signup button is clicked', () => {
-    mock.onGet('/signup').reply(200, {message: 'Redirecting to signup'});
-    wrapper.instance().submitLoginCredentials().then((response) => {
-      expect(response.status).toEqual(200);
-      expect(response.error).toEqual('Redirecting to signup');
     });
   });
 });

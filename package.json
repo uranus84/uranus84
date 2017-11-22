@@ -29,6 +29,7 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "react": "^16.1.1",
+    "react-datetime": "^2.11.0",
     "react-dom": "^16.1.1"
   },
   "repository": {

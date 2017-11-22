@@ -25,6 +25,7 @@ module.exports = {
       "import/extensions": "off",
       "react/prop-types": "off",
       "react/forbid-prop-types": "off",
-      "react/no-array-index-key": "off"
+      "react/no-array-index-key": "off",
+      "no-underscore-dangle": "off",
     }
 };

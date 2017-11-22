@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state = {
       todaysChores: [
         {
+          id: 1,
           chore_name: 'Wash dishes',
           next_date: '2017-11-19 09:00:00',
           frequency: 'daily',
@@ -20,6 +21,7 @@ class App extends React.Component {
           completed: true,
         },
         {
+          id: 2,
           chore_name: 'do laundry',
           next_date: '2017-11-19 09:00:00',
           frequency: 'weekly',
@@ -27,6 +29,7 @@ class App extends React.Component {
           completed: false,
         },
         {
+          id: 3,
           chore_name: 'Vacuum',
           next_date: '2017-11-19 09:00:00',
           frequency: 'weekly',
@@ -36,6 +39,7 @@ class App extends React.Component {
       ],
       futureChores: [
         {
+          id: 4,
           chore_name: 'take out trash',
           next_date: '2017-12-19 09:00:00',
           frequency: 'daily',
@@ -43,6 +47,7 @@ class App extends React.Component {
           completed: false,
         },
         {
+          id: 5,
           chore_name: 'change sheets',
           next_date: '2017-12-19 09:00:00',
           frequency: 'weekly',
@@ -50,6 +55,7 @@ class App extends React.Component {
           completed: false,
         },
         {
+          id: 6,
           chore_name: 'clean toilet',
           next_date: '2017-12-19 09:00:00',
           frequency: 'daily',

@@ -10,23 +10,25 @@ class AddChore extends React.component {
     this.state = {
       chore_name: '',
       next_date: '',
-      frequency: '',
+      frequency: 'daily',
     };
   }
 
   handleDateChange(event) {
-    this.setState({ next_date: moment(event._d).format('YYYY-MM-DD hh:mm:ss') });
+    this.setState({ next_date: moment(event._d).format('YYYY-MM-DD') });
   }
   handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
     });
   }
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
     axios.post('/chores', {
       chore_name: this.state.chore_name,
       next_date: this.state.next_date,
       frequency: this.state.frequency,
+      user_id: 1,
     })
       .then((response) => {
         console.log('posted a chore to server!');
@@ -40,7 +42,7 @@ class AddChore extends React.component {
   render() {
     return (
       <div className="row add-chore">
-        <form id="add-chore-form" onSubmit={this.handleSubmit}>
+        <form id="add-chore-form" onSubmit={e => this.handleSubmit(e)} >
           Chore:
           <input id="chore_name" type="text" onChange={e => this.handleChange(e)} />
           Date:

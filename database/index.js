@@ -2,10 +2,12 @@ const mysql = require('mysql');
 
 // Create a db connection & export it from this file
 
-// need to connect to user 'root', no password, and to db 'choreApp'
+// connection set up to route to ClearDB database on heroku
 let dbConnection = mysql.createConnection({
-  user: 'root',
-  database: 'choreApp'
+  host: 'us-cdbr-iron-east-05.cleardb.net',
+  user: 'b912fe68a70b8b',
+  password: '35dc2118',
+  database: 'heroku_49fb8337b7fd0ce'
 });
 
 dbConnection.connect();

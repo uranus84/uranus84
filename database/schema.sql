@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS choreApp;
+-- DROP DATABASE IF EXISTS choreApp;
 
-CREATE DATABASE choreApp;
+-- CREATE DATABASE choreApp;
 
-USE choreApp;
+-- USE choreApp;
 
 CREATE TABLE groups (
   id int PRIMARY KEY AUTO_INCREMENT,
@@ -35,4 +35,8 @@ CREATE TABLE chores (
  *    mysql -u root < path of the this file/schema.sql
  *  to create the database and the tables.*/
 
-
+/* Refactor to routing. File should be executed only once similarly to above
+ * using ClearDB info from database/index.js. Should send seed data to ClearDB
+ * database in heroku. Removed first lines due to assumed deprecation. Pending
+ * further testing if needed.
+ */

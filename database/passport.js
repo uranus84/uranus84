@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var dbConnection = require('./index.js');
 
-dbConnection.query('USE choreApp');  
+dbConnection.query('USE heroku_49fb8337b7fd0ce');  
 
 // use module exports to IIFEify the function once in server file
 module.exports = function(passport) {

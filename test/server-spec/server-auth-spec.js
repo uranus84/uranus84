@@ -6,6 +6,9 @@ let should = chai.should();
 
 describe('Server Auth Routes', () => {
   describe('POST to signup', () => {
+    it('Returns status code of 302 after redirect', () => {
+
+    });
     it('Redirects to login on success', () => {
 
     });
@@ -14,6 +17,9 @@ describe('Server Auth Routes', () => {
     });
   });
   describe('POST to login', () => {
+    it('Returns status code of 302 after redirect', () => {
+
+    });
     it('Redirects to home page on success', () => {
 
     });

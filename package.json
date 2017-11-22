@@ -46,8 +46,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.7.2",
     "chai": "^4.1.2",
+<<<<<<< Updated upstream
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
+=======
+    "chai-http": "^3.0.0",
+>>>>>>> Stashed changes
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",

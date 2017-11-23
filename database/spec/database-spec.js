@@ -6,8 +6,8 @@ const expect = require('chai').expect;
 const request = require('request');
 
 
-describe('Persistent choreApp Server', () => {
 
+describe('Persistent choreApp Server', () => {
   let dbConnection;
   beforeEach((done) => {
     dbConnection = mysql.createConnection({
@@ -22,7 +22,6 @@ describe('Persistent choreApp Server', () => {
     dbConnection.query(`truncate ${tablename} ${done}`);
   });
   afterEach(() => dbConnection.end());
-
 
   it('should insert the chores to the DB', (done) => {
   // post the new chore into the DB

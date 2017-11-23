@@ -31,7 +31,7 @@ app.use(express.static(__dirname + './../'));
 //////// Routes //////////
 app.get('/', (req, res) => res.send('Server Message!'));
 
-app.post('/signup', passport.autheticate('local-signup', {
+app.post('/signup', passport.authenticate('local-signup', {
   successRedirect: '/login',
   failureRedirect: '/signup',
   failureFlash: true

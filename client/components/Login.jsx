@@ -26,7 +26,7 @@ class Login extends React.Component {
 
   submitLoginCredentials() {
 		// console.log('Clicked login!');
-		return axios.post('/login', {
+		axios.post('/login', {
 			username: this.state.username,
 			password: this.state.password
 		})
@@ -40,7 +40,7 @@ class Login extends React.Component {
 
   signupNewUser(){
 		// console.log('Clicked signup!');
-		axios.get('/signup')
+		axios.post('/signup')
 		.then(function (response) {
 			console.log('Redirecting to signup page');
 		})
@@ -59,9 +59,9 @@ class Login extends React.Component {
 					<div>
 						<input ref='password' type='text' id='password' onChange={this.onChangePassword}></input>
 					</div>
-					<input type='submit' class='login'></input>
+					<input type='submit' className='login'></input>
 				</form>
-				<button type='button' class='signup' onClick={() => {this.signupNewUser()}}>
+				<button type='button' className='signup' onClick={() => {this.signupNewUser()}}>
 					Sign-up
 				</button>
 			</div>

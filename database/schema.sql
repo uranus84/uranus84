@@ -4,7 +4,6 @@
 
 -- USE choreApp;
 
-
 CREATE TABLE users (
   id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
   user_name varchar(20) NOT NULL UNIQUE,

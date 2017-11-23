@@ -6,8 +6,8 @@ const expect = require('chai').expect;
 const request = require('request');
 
 
-
 describe('Persistent choreApp Server', () => {
+
   let dbConnection;
   beforeEach((done) => {
     dbConnection = mysql.createConnection({

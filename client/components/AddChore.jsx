@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
-
 import Datetime from 'react-datetime';
 // import DayPickerInput from 'react-day-picker/DayPickerInput';
 // import 'react-day-picker/lib/style.css';

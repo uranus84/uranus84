@@ -25,28 +25,23 @@ class Login extends React.Component {
   }
 
   submitLoginCredentials() {
-		// console.log('Clicked login!');
 		axios.post('/login', {
 			username: this.state.username,
 			password: this.state.password
 		})
-		.then(function (response) {
-			console.log('Redirecting to homepage');
+		.then((response) => {
+			if (response.data.view === 'home') {
+				this.props.handleLogin(response.data.view);
+			}
 		})
 		.catch(function (error) {
-			console.log(error);
+			alert('Please check your username and password input.');
 		});
 	}
 
   signupNewUser(){
 		// console.log('Clicked signup!');
-		axios.post('/signup')
-		.then(function (response) {
-			console.log('Redirecting to signup page');
-		})
-		.catch(function (error){
-			console.log(error);
-		})
+		this.props.handleLogin('signup')
 	}
 
 	render (){
@@ -59,10 +54,10 @@ class Login extends React.Component {
 					<div>
 						<input ref='password' type='text' id='password' onChange={this.onChangePassword}></input>
 					</div>
-					<input type='submit' className='login'></input>
+					<input type='submit' className='login' value='Login' />
 				</form>
 				<button type='button' className='signup' onClick={() => {this.signupNewUser()}}>
-					Sign-up
+					Sign up
 				</button>
 			</div>
 		);

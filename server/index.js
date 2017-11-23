@@ -31,21 +31,20 @@ app.use(express.static(__dirname + './../'));
 //////// Routes //////////
 app.get('/', (req, res) => res.send('Server Message!'));
 
-app.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/login',
-  failureRedirect: '/signup',
-  failureFlash: true
-}));
+app.post('/signup', passport.authenticate('local-signup'), (req, res) => {
+  console.log('Creating signup response');
+  res.send(JSON.stringify({ view: 'home' }));
+});
 
-app.post('/login', passport.authenticate('local-login', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash: true
-}));
+app.post('/login', passport.authenticate('local-login'), (req, res) => {
+  console.log('Creating login response');
+  res.send(JSON.stringify({ view: 'home' }));
+});
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/login');
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.send(JSON.stringify({ view: 'login' }));
 });
 
 app.get('/test', (req, res) => {

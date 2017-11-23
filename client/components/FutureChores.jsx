@@ -7,7 +7,16 @@ function FutureChores(props) {
       <div className="row">
         <h3>Tomorrow and Beyond</h3>
       </div>
-      {props.chores.map((chore, index) => <FutureChoreEntry chore={chore} key={index} />)}
+      {props.chores.map((chore, index) => {
+        return (
+          <FutureChoreEntry
+            chore={chore}
+            key={index}
+            index={index}
+            handleCompletion={props.handleCompletion}
+          />
+        );
+      })}
     </div>
   );
 }

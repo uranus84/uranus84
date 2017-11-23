@@ -27,5 +27,6 @@ module.exports = {
       "react/forbid-prop-types": "off",
       "react/no-array-index-key": "off",
       "no-underscore-dangle": "off",
+      "arrow-body-style": "off",
     }
 };

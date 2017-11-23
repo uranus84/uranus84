@@ -30,3 +30,6 @@ bower_components/
 
 # heroku local environment
 .env
+
+# heroku local environment
+.env

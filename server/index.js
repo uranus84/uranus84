@@ -5,6 +5,7 @@ const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
+const modelDB = require('../database/model.js');
 
 require('../database/passport.js')(passport);
 
@@ -50,6 +51,26 @@ app.get('/logout', (req, res) => {
 app.get('/test', (req, res) => {
 	console.log('im success im server');
   res.send('Get request success!');
+});
+
+// get request to /chores route
+app.get('/chores', (req, res) => {
+  modelDB.getChores(req, res);
+});
+
+// post request to /chores route
+app.post('/chores', (req, res) => {
+  modelDB.postChores(req, res, req.body);
+});
+
+// delete request to /chores route
+app.delete('/chores', (req, res) => {
+  modelDB.deleteChores(req, res);
+});
+
+// put request to /chores route
+app.put('/chores', (req, res) => {
+  modelDB.updateChores(req, res);
 });
 
 // Spin it up

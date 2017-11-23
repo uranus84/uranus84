@@ -10,7 +10,8 @@ let dbConnection = mysql.createConnection({
   password: '35dc2118',
   database: 'heroku_49fb8337b7fd0ce'
   user: 'root',
-  database: 'choreApp'
+  database: 'choreApp',
+  stringifyObjects: true,
 });
 
 dbConnection.connect();

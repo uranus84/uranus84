@@ -4,10 +4,6 @@
 
 -- USE choreApp;
 
-CREATE TABLE groups (
-  id int PRIMARY KEY AUTO_INCREMENT,
-  group_name varchar(20) NOT NULL
-);
 
 CREATE TABLE users (
   id int NOT NULL PRIMARY KEY AUTO_INCREMENT,

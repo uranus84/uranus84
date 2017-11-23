@@ -46,7 +46,7 @@ class Signup extends React.Component {
 					<div>
 						<input ref='password' type='text' id='password' onChange={this.onChangePassword}></input>
 					</div>
-					<input type='submit' class='signup'></input>
+					<input type='submit' className='signup'></input>
 				</form>
 			</div>
 		);

@@ -1,5 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var dbConnection = require('./index.js');
+const flash = require('connect-flash');
 
 dbConnection.query('USE heroku_49fb8337b7fd0ce');  
 
@@ -12,7 +13,7 @@ module.exports = function(passport) {
   });
 
   passport.deserializeUser(function(id, done) {
-    connection.query(`SELECT * FROM users WHERE id = ${id}`,function(err,rows) { 
+    dbConnection.query(`SELECT * FROM users WHERE id = ${id}`,function(err,rows) {
       done(err, rows[0]);
     });
   });
@@ -20,10 +21,10 @@ module.exports = function(passport) {
 
 // naming signup and login strategies
 
-  passport.use('local-signup', new LocalStrategy(
+  passport.use('local-signup', new LocalStrategy({ passReqToCallback: true },
     function(req, username, password, done) {
       // check if user already exists
-      connection.query(`SELECT * FROM users WHERE username = '${username}'`, function(err, rows) {
+      dbConnection.query(`SELECT * FROM users WHERE user_name = '${username}'`, function(err, rows) {
 
         if (err) { return done(err); }
 
@@ -37,7 +38,7 @@ module.exports = function(passport) {
           }
         
           var insertQuery = `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`;
-          connection.query(insertQuery, function(err,rows){
+          dbConnection.query(insertQuery, function(err,rows){
             newUserMysql.id = rows.insertId;
             return done(null, newUserMysql);
           }); 
@@ -46,22 +47,27 @@ module.exports = function(passport) {
     }
   ));
 
-  passport.use('local-login', new LocalStrategy(
+  passport.use('local-login', new LocalStrategy({ passReqToCallback: true },
     function(req, username, password, done) {
 
-      connection.query(`SELECT * FROM users WHERE username = '${username}'`,function(err,rows) {
+      dbConnection.query(`SELECT * FROM users WHERE user_name = '${username}'`,function(err,rows) {
 
-        if (err) { return done(err); }
+        if (err) {
+          return done(err);
+        }
 
         if (!rows.length) {
+          console.log('Fails to find user.')
           return done(null, false, req.flash('loginMessage', 'No user found.'));
         } 
         
         // if the user is found but the password is wrong
         if (!( rows[0].password == password)) {
+          console.log('Found user, incorrect password');
           return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
         }
         // everything ok, return successful user
+        console.log('All gucci, send it through');
         return done(null, rows[0]);
       });
     }

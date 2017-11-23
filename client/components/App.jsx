@@ -71,6 +71,7 @@ class App extends React.Component {
   componentWillMount() {
     this.fetchChores.call(this);
   }
+
   fetchChores() {
     const app = this;
     axios.get('/chores')
@@ -83,6 +84,7 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
+
   handleCompletionToday(index) {
     console.log('inside completion method');
     const chores = this.state.todaysChores;
@@ -96,6 +98,7 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
+
   handleCompletionFuture(index) {
     console.log('inside completion method');
     const chores = this.state.futureChores;
@@ -109,6 +112,7 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
+  
   render() {
     console.log('rendering');
     return (

@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-// import Datetime from 'react-datetime';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
+import Datetime from 'react-datetime';
+// import DayPickerInput from 'react-day-picker/DayPickerInput';
 // import 'react-day-picker/lib/style.css';
 
 class AddChore extends React.Component {
@@ -17,8 +17,8 @@ class AddChore extends React.Component {
     };
   }
 
-  handleDateChange(day) {
-    this.setState({ next_date: day });
+  handleDateChange(event) {
+    this.setState({ next_date: moment(event._d).format('MM-DD-YYYY') });
   }
   handleChange(event) {
     this.setState({
@@ -49,11 +49,11 @@ class AddChore extends React.Component {
           Chore:
           <input id="chore_name" type="text" onChange={e => this.handleChange(e)} />
           Date:
-          <DayPickerInput
-            name="next_date"
-            placeholder="MM/DD/YYYY"
-            format="MM/DD/YYYY"
-            onDayChange={this.handleDayChange}
+          <Datetime
+            id="next_date"
+            open={false}
+            inputProps={{ placeholder: 'select a date' }}
+            onChange={e => this.handleDateChange(e)}
           />
           Frequency:
           <select id="frequency" onChange={e => this.handleChange(e)}>
@@ -69,11 +69,12 @@ class AddChore extends React.Component {
   }
 }
 
-// <Datetime
-// id="next_date"
-// open={false}
-// inputProps={{ placeholder: 'select a date' }}
-//   onChange={e => this.handleDateChange(e)}
+// <DayPickerInput
+// name="next_date"
+// placeholder="MM/DD/YYYY"
+// format="MM/DD/YYYY"
+// onDayChange={this.handleDayChange}
 // />
 
 export default AddChore;
+

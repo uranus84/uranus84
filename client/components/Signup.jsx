@@ -24,15 +24,19 @@ class Signup extends React.Component {
 
   signupNewUser() {
 		// console.log('Clicked signup!');
-		return axios.post('/signup', {
+		axios.post('/signup', {
 			username: this.state.username,
 			password: this.state.password
 		})
-		.then(function (response) {
-			console.log('Successfully signed up!');
+		.then((response) => {
+			console.log(response);
+			if (response.data.view === 'home') {
+				this.props.handleSignup(response.data.view);
+			}
 		})
 		.catch(function (error) {
 			console.log(error);
+			// alert('The username is already taken.');
 		});
   }
 
@@ -46,7 +50,7 @@ class Signup extends React.Component {
 					<div>
 						<input ref='password' type='text' id='password' onChange={this.onChangePassword}></input>
 					</div>
-					<input type='submit' className='signup'></input>
+					<input type='submit' className='signup' value='Sign up'></input>
 				</form>
 			</div>
 		);

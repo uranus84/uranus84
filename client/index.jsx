@@ -4,9 +4,9 @@ import App from './components/App.jsx';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 
-class Index extends React.component {
-	constructor() {
-		super();
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
 		this.state = {
 			view: 'login'
 		}
@@ -27,8 +27,18 @@ class Index extends React.component {
       return <Login handleLogin={this.changeView}/>
     } else if (view === 'signup') {
       return <Signup handleSignup={this.changeView}/>
-    } else if (view === '')
+    } else if (view === 'home'){
+      return <App handleLogout={this.changeView}/>
+    }
+  }
+
+  render() {
+    return (
+      <div className="main">
+        {this.renderView()}
+      </div>
+    )
   }
 }
 
-ReactDOM.render(<Login />, document.getElementById('app'));
+ReactDOM.render(<Index />, document.getElementById('app'));

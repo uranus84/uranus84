@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS choreApp;
+-- DROP DATABASE IF EXISTS choreApp;
 
-CREATE DATABASE choreApp;
+-- CREATE DATABASE choreApp;
 
-USE choreApp;
+-- USE choreApp;
 
 CREATE TABLE groups (
   id int PRIMARY KEY AUTO_INCREMENT,

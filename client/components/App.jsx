@@ -91,6 +91,19 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
+<<<<<<< b5b42b3c36ca2cef1dcebf41ecdd870c812912ef
+=======
+  userLogout() {
+    axios.get('/logout')
+      .then((response) => {
+        if (response.data.view === 'login') {
+          this.handleLogout(response.data.view);
+        }
+      })
+      .catch(err => console.log(err));
+  }
+  
+>>>>>>> Adding logout functionality
   render() {
     return (
       <div className="container">
@@ -123,6 +136,11 @@ class App extends React.Component {
             submitChore={this.submitChoreEdits}
             editComponent={this.state.futureEditIndex}
           />
+        </div>
+        <div className="button">
+          <button type="button" onClick={() => {this.userLogout()}}>
+            Logout
+          </button>
         </div>
       </div>
     );

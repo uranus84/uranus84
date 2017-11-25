@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .add-chore, .todays-chores-list, .future-chores-list {
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -26,6 +26,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .login input, .login button {
   margin: .5em;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+#username, #password {
+  width: 80%;
+  margin: 0 auto;
   font-size: 16px;
   line-height: 1.5em;
 }

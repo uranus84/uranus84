@@ -30,5 +30,6 @@ module.exports = {
       "arrow-body-style": "off",
       "no-script-url": "off",
       "consistent-return": "off",
+      "no-path-concat": "off",
     }
 };

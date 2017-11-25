@@ -6,10 +6,10 @@ const moment = require('moment');
 
 // response to client in the JSON data format {todayChores:[ ], futureChores: [ ] }
 
-const getChores = (req, res) => {
+const getChores = (req, res, userId) => {
   console.log('im getchores');
   return new Promise((resolve, reject) => {
-    db.query('SELECT * FROM chores', (err, result) => {
+    db.query(`SELECT * FROM chores WHERE user_id = ${userId}`, (err, result) => {
       if (err) {
         return reject(err);
       }
@@ -42,9 +42,9 @@ const getChores = (req, res) => {
   });
 };
 
-const postChores = (req, res, dataToBeInserted) => {
+const postChores = (req, res, dataToBeInserted, userId) => {
   return new Promise((resolve, reject) => {
-    const insertQuery = `INSERT INTO chores (chore_name,next_date,frequency,last_date_completed,completed,user_id) VALUES ('${dataToBeInserted.chore_name}','${dataToBeInserted.next_date}', '${dataToBeInserted.frequency}',NULL, false, '${dataToBeInserted.user_id}')`;
+    const insertQuery = `INSERT INTO chores (chore_name,next_date,frequency,last_date_completed,completed,user_id) VALUES ('${dataToBeInserted.chore_name}', '${dataToBeInserted.next_date}', '${dataToBeInserted.frequency}', NULL, false, '${userId}')`;
     db.query(insertQuery, (err, result) => {
       if (err) {
         return reject(err);

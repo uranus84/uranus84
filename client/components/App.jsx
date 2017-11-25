@@ -88,7 +88,7 @@ class App extends React.Component {
 
   handleCompletionToday(index) {
     const chores = this.state.todaysChores;
-    chores[index].completed = true;
+    chores[index].completed = '1';
     this.setState({ todaysChores: chores });
 
     axios.put('/chores', { id: chores[index].id })
@@ -101,8 +101,10 @@ class App extends React.Component {
 
   handleCompletionFuture(index) {
     const chores = this.state.futureChores;
-    chores[index].completed = true;
+    chores[index].completed = '1';
     this.setState({ futureChores: chores });
+    console.log(this.state.futureChores);
+    console.log(this.state.futureChores);
 
     axios.put('/chores', { id: chores[index].id })
       .then((response) => {

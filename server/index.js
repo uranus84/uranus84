@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
-const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const modelDB = require('../database/model.js');
 
@@ -24,7 +23,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 // initial static page
 app.use(express.static(__dirname + './../'));

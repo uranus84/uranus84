@@ -1,6 +1,7 @@
 import React from 'react';
 // import Axios for all client files making requests
 import axios from 'axios';
+import moment from 'moment';
 
 import TodaysChores from './TodaysChores.jsx';
 import FutureChores from './FutureChores.jsx';
@@ -12,26 +13,8 @@ class App extends React.Component {
     this.state = {
       user_id: this.props.user_id,
       username: this.props.username,
-      todaysChores: [
-        {
-          id: 1,
-          chore_name: 'Wash dishes',
-          next_date: '2017-11-19',
-          frequency: 'daily',
-          last_date_completed: '2017-11-18',
-          completed: true,
-        },
-      ],
-      futureChores: [
-        {
-          id: 4,
-          chore_name: 'take out trash',
-          next_date: '2017-12-19',
-          frequency: 'daily',
-          last_date_completed: '2017-11-18',
-          completed: false,
-        },
-      ],
+      todaysChores: [],
+      futureChores: [],
       todayEditIndex: null,
       futureEditIndex: null,
     };
@@ -64,6 +47,7 @@ class App extends React.Component {
   handleCompletionToday(index) {
     const chores = this.state.todaysChores;
     chores[index].completed = '1';
+    chores[index].last_date_completed = moment().format('YYYY-MM-DD');
     this.setState({ todaysChores: chores });
 
     axios.put('/chores', { id: chores[index].id })
@@ -77,9 +61,8 @@ class App extends React.Component {
   handleCompletionFuture(index) {
     const chores = this.state.futureChores;
     chores[index].completed = '1';
+    chores[index].last_date_completed = moment().format('YYYY-MM-DD');
     this.setState({ futureChores: chores });
-    console.log(this.state.futureChores);
-    console.log(this.state.futureChores);
 
     axios.put('/chores', { id: chores[index].id })
       .then((response) => {

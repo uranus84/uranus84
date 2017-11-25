@@ -92,7 +92,7 @@ const updateChores = (req, res) => {
       } else if (freq === 'monthly') {
         dateToBeUpdated = moment(formattedDate).add(1, 'month').format('YYYY-MM-DD');
       }
-      const updateQuery = `UPDATE chores SET  next_date ='${dateToBeUpdated}' WHERE id = '${req.body.id}'`;
+      const updateQuery = `UPDATE chores SET next_date = '${dateToBeUpdated}', last_date_completed = '${moment().format('YYYY-MM-DD')}' WHERE id = '${req.body.id}'`;
       db.query(updateQuery, (error, results) => {
         if (err) {
           return reject(err);

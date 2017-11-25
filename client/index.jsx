@@ -11,12 +11,16 @@ class Index extends React.Component {
     super(props);
     this.state = {
       view: 'login',
+      user_id: 0,
+      username: '',
     };
     this.changeView = this.changeView.bind(this);
   }
   changeView(option) {
     this.setState({
-      view: option,
+      view: option.view,
+      user_id: option.user_id,
+      username: option.username,
     });
   }
 
@@ -25,7 +29,13 @@ class Index extends React.Component {
     if (view === 'signup') {
       return <Signup handleSignup={this.changeView} />;
     } else if (view === 'home') {
-      return <App handleLogout={this.changeView} />;
+      return (
+        <App
+          handleLogout={this.changeView}
+          user_id={this.state.user_id}
+          username={this.state.username}
+        />
+      );
     }
     return <Login handleLogin={this.changeView} />;
   }

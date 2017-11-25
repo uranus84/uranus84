@@ -29,7 +29,7 @@ class Login extends React.Component {
     })
       .then((response) => {
         if (response.data.view === 'home') {
-          this.props.handleLogin(response.data.view);
+          this.props.handleLogin(response.data);
         }
       })
       .catch((error) => {

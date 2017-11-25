@@ -30,7 +30,7 @@ class AddChore extends React.Component {
       chore_name: this.state.chore_name,
       next_date: this.state.next_date,
       frequency: this.state.frequency,
-      user_id: 1,
+      user_id: this.props.user_id,
     })
       .then((response) => {
         console.log('posted a chore to server!');

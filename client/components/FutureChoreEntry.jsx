@@ -3,7 +3,7 @@ import moment from 'moment';
 
 function FutureChoreEntry({ chore, index, handleCompletion }) {
   let lastCompleted;
-  if (chore.last_date_completed) {
+  if (chore.last_date_completed !== null) {
     lastCompleted = 'Last completed ';
     lastCompleted += moment(chore.last_date_completed)
       .calendar(null, {
@@ -25,10 +25,10 @@ function FutureChoreEntry({ chore, index, handleCompletion }) {
         checked={chore.completed}
         onChange={() => handleCompletion(index)}
       />
-      <span className="chore-name">{chore.chore_name} |</span>
-      <span className="chore-freq">| {chore.frequency} |</span>
+      <span className="chore-name">{chore.chore_name}</span>
+      <span className="chore-freq">| {chore.frequency}</span>
       <span className="chore-due">
-        | Due {moment(chore.next_date)
+        Due {moment(chore.next_date)
           .calendar(null, {
             lastDay: '[Yesterday]',
             sameDay: '[Today]',
@@ -37,10 +37,10 @@ function FutureChoreEntry({ chore, index, handleCompletion }) {
             nextWeek: 'dddd',
             sameElse: 'L',
           })
-        } |
+        }
       </span>
       <span className="chore-last-done">
-        | {lastCompleted}
+        {lastCompleted}
       </span>
     </div>
   );

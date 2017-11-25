@@ -29,5 +29,6 @@ module.exports = {
       "no-underscore-dangle": "off",
       "arrow-body-style": "off",
       "no-script-url": "off",
+      "consistent-return": "off",
     }
 };

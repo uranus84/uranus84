@@ -10,13 +10,14 @@ class AddChore extends React.Component {
     super(props);
     this.state = {
       chore_name: '',
-      next_date: '',
+      next_date: moment().format('YYYY-MM-DD'),
       frequency: 'daily',
     };
+    this.handleDayChange = this.handleDayChange.bind(this);
   }
 
-  handleDateChange(event) {
-    this.setState({ next_date: moment(event._d).format('MM-DD-YYYY') });
+  handleDayChange(day) {
+    this.setState({ next_date: moment(day).format('YYYY-MM-DD') });
   }
   handleChange(event) {
     this.setState({
@@ -27,13 +28,12 @@ class AddChore extends React.Component {
     event.preventDefault();
     axios.post('/chores', {
       chore_name: this.state.chore_name,
-      next_date: moment(this.state.next_date).format('YYYY-MM-DD'),
+      next_date: this.state.next_date,
       frequency: this.state.frequency,
       user_id: 1,
     })
-      .then((response) => {
-        console.log('posted a chore to server!');
-        console.log(response);
+      .then(() => {
+        axios.get('/chores');
       })
       .catch((err) => {
         console.log(err);

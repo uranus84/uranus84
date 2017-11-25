@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // user_id: 1,
-      username: 'amy',
+      user_id: this.props.user_id,
+      username: this.props.username,
       todaysChores: [
         {
           id: 1,
@@ -21,43 +21,11 @@ class App extends React.Component {
           last_date_completed: '2017-11-18',
           completed: true,
         },
-        {
-          id: 2,
-          chore_name: 'do laundry',
-          next_date: '2017-11-19',
-          frequency: 'weekly',
-          last_date_completed: '2017-11-18',
-          completed: false,
-        },
-        {
-          id: 3,
-          chore_name: 'Vacuum',
-          next_date: '2017-11-19',
-          frequency: 'weekly',
-          last_date_completed: '2017-11-18',
-          completed: false,
-        },
       ],
       futureChores: [
         {
           id: 4,
           chore_name: 'take out trash',
-          next_date: '2017-12-19',
-          frequency: 'daily',
-          last_date_completed: '2017-11-18',
-          completed: false,
-        },
-        {
-          id: 5,
-          chore_name: 'change sheets',
-          next_date: '2017-12-19',
-          frequency: 'weekly',
-          last_date_completed: '2017-11-18',
-          completed: false,
-        },
-        {
-          id: 6,
-          chore_name: 'clean toilet',
           next_date: '2017-12-19',
           frequency: 'daily',
           last_date_completed: '2017-11-18',
@@ -123,7 +91,7 @@ class App extends React.Component {
           <h1>Household Management</h1>
         </div>
         <div className="row">
-          <AddChore />
+          <AddChore user_id={this.state.user_id} />
         </div>
         <div className="row">
           <TodaysChores

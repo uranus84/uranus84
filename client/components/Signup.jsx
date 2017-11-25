@@ -22,6 +22,11 @@ class Signup extends React.Component {
     this.setState({ password: event.target.value });
   }
 
+  returnToLogin() {
+    // console.log('Clicked signup!');
+    this.props.handleSignup({ view: 'login' });
+  }
+
   signupNewUser() {
     // console.log('Clicked signup!');
     axios.post('/signup', {
@@ -43,26 +48,33 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div>
-        <form action="javascript:void(0)" onSubmit={this.signupNewUser}>
-          <div>
-            <input
-              placeholder="username"
-              type="text"
-              id="username"
-              onChange={this.onChangeUsername}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="password"
-              type="text"
-              id="password"
-              onChange={this.onChangePassword}
-            />
-          </div>
-          <input type="submit" className="signup" value="Sign up" />
-        </form>
+      <div className="login">
+        <h1>TidyUp</h1>
+        <h3>Create an Account</h3>
+        <div className="login-container">
+          <form action="javascript:void(0)" onSubmit={this.signupNewUser}>
+            <div>
+              <input
+                placeholder="username"
+                type="text"
+                id="username"
+                onChange={this.onChangeUsername}
+              />
+            </div>
+            <div>
+              <input
+                placeholder="password"
+                type="text"
+                id="password"
+                onChange={this.onChangePassword}
+              />
+            </div>
+            <input type="submit" className="signup-button" value="Sign up" />
+          </form>
+          <button type="button" className="login-button" onClick={() => { this.returnToLogin(); }}>
+            Return to Login
+          </button>
+        </div>
       </div>
     );
   }

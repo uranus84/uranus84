@@ -97,13 +97,15 @@ class App extends React.Component {
     const chores = this.state.todaysChores;
     chores[index] = obj;
     this.setState({ todaysChores: chores });
+    this.setState({ todayEditIndex: null });
 
-    axios.put('/editChore', { task: chores[index] })
-      .then((response) => {
-        console.log('Chore updated');
-        console.log(response);
-      })
-      .catch(err => console.log(err));
+    ///////////*Uncomment this when TJ database route is up*///////////////
+    // axios.put('/editChore', { task: chores[index] })
+    //   .then((response) => {
+    //     console.log('Chore updated');
+    //     console.log(response);
+    //   })
+    //   .catch(err => console.log(err));
   }
 
   editFutureChore(index) {
@@ -114,13 +116,15 @@ class App extends React.Component {
     const chores = this.state.futureChores;
     chores[index] = obj;
     this.setState({ futureChores: chores });
+    this.setState({ futureEditIndex: null });
 
-    axios.put('/editChore', { task: chores[index] })
-      .then((response) => {
-        console.log('Chore updated');
-        console.log(response);
-      })
-      .catch(err => console.log(err));
+    ///////////*Uncomment this when TJ database route is up*///////////////
+    // axios.put('/editChore', { task: chores[index] })
+    //   .then((response) => {
+    //     console.log('Chore updated');
+    //     console.log(response);
+    //   })
+    //   .catch(err => console.log(err));
   }
 
   userLogout() {
@@ -151,6 +155,7 @@ class App extends React.Component {
             handleCompletion={this.handleCompletionToday}
             editChore={this.editTodayChore}
             submitChore={this.submitEditsTodayChore}
+            editComponent={this.state.todayEditIndex}
           />
         </div>
         <div className="row">
@@ -159,6 +164,7 @@ class App extends React.Component {
             handleCompletion={this.handleCompletionFuture}
             editChore={this.editFutureChore}
             submitChore={this.submitEditsFutureChore}
+            editComponent={this.state.futureEditIndex}
           />
         </div>
         <div className="button">

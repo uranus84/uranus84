@@ -45,9 +45,9 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login">
         <h1>TidyUp</h1>
-        <div className="login">
+        <div className="login-container">
           <form action="javascript:void(0)" onSubmit={this.submitLoginCredentials}>
             <div>
               <input

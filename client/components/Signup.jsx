@@ -36,7 +36,7 @@ class Signup extends React.Component {
 		})
 		.catch(function (error) {
 			console.log(error);
-			// alert('The username is already taken.');
+			alert('The username is already taken.');
 		});
   }
 
@@ -45,10 +45,10 @@ class Signup extends React.Component {
 			<div>
 				<form action="javascript:void(0)" onSubmit={this.signupNewUser}>
 					<div>
-						<input ref='username' type='text' id='username' onChange={this.onChangeUsername}></input>
+						<input type='text' id='username' onChange={this.onChangeUsername}></input>
 					</div>
 					<div>
-						<input ref='password' type='text' id='password' onChange={this.onChangePassword}></input>
+						<input type='password' id='password' onChange={this.onChangePassword}></input>
 					</div>
 					<input type='submit' className='signup' value='Sign up'></input>
 				</form>

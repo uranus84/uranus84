@@ -32,9 +32,15 @@ class App extends React.Component {
           completed: false,
         },
       ],
+      todayEditIndex: null,
+      futureEditIndex: null,
     };
     this.handleCompletionToday = this.handleCompletionToday.bind(this);
     this.handleCompletionFuture = this.handleCompletionFuture.bind(this);
+    this.editTodayChore = this.editTodayChore.bind(this);
+    this.submitEditsTodayChore = this.submitEditsTodayChore.bind(this);
+    this.editFutureChore = this.editFutureChore.bind(this);
+    this.submitEditsFutureChore = this.submitEditsFutureChore.bind(this);
     this.handleLogout = this.props.handleLogout.bind(this);
   }
 
@@ -83,6 +89,40 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
+  editTodayChore(index) {
+    this.setState({ todayEditIndex: index });
+  }
+
+  submitEditsTodayChore(index, obj) {
+    const chores = this.state.todaysChores;
+    chores[index] = obj;
+    this.setState({ todaysChores: chores });
+
+    axios.put('/editChore', { task: chores[index] })
+      .then((response) => {
+        console.log('Chore updated');
+        console.log(response);
+      })
+      .catch(err => console.log(err));
+  }
+
+  editFutureChore(index) {
+    this.setState({ futureEditIndex: index });
+  }
+
+  submitEditsFutureChore(index, obj) {
+    const chores = this.state.futureChores;
+    chores[index] = obj;
+    this.setState({ futureChores: chores });
+
+    axios.put('/editChore', { task: chores[index] })
+      .then((response) => {
+        console.log('Chore updated');
+        console.log(response);
+      })
+      .catch(err => console.log(err));
+  }
+
   userLogout() {
     axios.get('/logout')
       .then((response) => {
@@ -92,7 +132,7 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
-  
+
   render() {
     return (
       <div className="container">
@@ -109,16 +149,20 @@ class App extends React.Component {
           <TodaysChores
             chores={this.state.todaysChores}
             handleCompletion={this.handleCompletionToday}
+            editChore={this.editTodayChore}
+            submitChore={this.submitEditsTodayChore}
           />
         </div>
         <div className="row">
           <FutureChores
             chores={this.state.futureChores}
             handleCompletion={this.handleCompletionFuture}
+            editChore={this.editFutureChore}
+            submitChore={this.submitEditsFutureChore}
           />
         </div>
         <div className="button">
-          <button type="button" onClick={() => {this.userLogout()}}>
+          <button type="button" onClick={() => { this.userLogout(); }}>
             Logout
           </button>
         </div>

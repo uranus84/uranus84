@@ -2,7 +2,8 @@
 /*********FOR LOCAL TESTING*****************/
 -- DROP DATABASE IF EXISTS choreApp;
 
--- CREATE DATABASE choreApp;
+/*********FOR LOCAL TESTING*****************/
+DROP DATABASE IF EXISTS choreApp;
 
 -- USE choreApp;
 /*******************************************/

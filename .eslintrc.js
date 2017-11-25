@@ -28,5 +28,6 @@ module.exports = {
       "react/no-array-index-key": "off",
       "no-underscore-dangle": "off",
       "arrow-body-style": "off",
+      "no-script-url": "off",
     }
 };

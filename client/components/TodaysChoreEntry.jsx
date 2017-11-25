@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
+<<<<<<< e90e7a5fd492cf6241c3c62c36d2b8e7ea917f23
 function TodaysChoreEntry({ chore, index, handleCompletion }) {
   let lastCompleted;
   if (chore.last_date_completed !== null) {
@@ -17,8 +18,12 @@ function TodaysChoreEntry({ chore, index, handleCompletion }) {
   } else {
     lastCompleted = 'Never completed';
   }
+=======
+function TodaysChoreEntry({ chore, index, handleCompletion, editChore }) {
+  console.log(chore.next_date_due);
+>>>>>>> Can edit tasks
   return (
-    <div className="row todays-chore-entry">
+    <div className="row todays-chore-entry" onClick={() => editChore(index)}>
       <input
         className="done"
         type="checkbox"

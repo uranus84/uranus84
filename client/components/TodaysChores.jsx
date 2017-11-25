@@ -1,5 +1,6 @@
 import React from 'react';
 import TodaysChoreEntry from './TodaysChoreEntry.jsx';
+import TodaysChoreEdit from './TodaysChoreEdit.jsx';
 
 function TodaysChores(props) {
   return (
@@ -8,15 +9,26 @@ function TodaysChores(props) {
         <h3>Today</h3>
       </div>
       {props.chores.map((chore, index) => {
-        return (
-          <TodaysChoreEntry
-            chore={chore}
-            key={index}
-            index={index}
-            handleCompletion={props.handleCompletion}
-            editChore={props.editChore}
-          />
-        );
+        if (index === props.editComponent) {
+          return (
+            <TodaysChoreEdit
+              chore={chore}
+              key={index}
+              index={index}
+              submitChore={props.submitChore}
+            />
+          );
+        } else {
+          return (
+            <TodaysChoreEntry
+              chore={chore}
+              key={index}
+              index={index}
+              handleCompletion={props.handleCompletion}
+              editChore={props.editChore}
+            />
+          );
+        }
       })}
     </div>
   );

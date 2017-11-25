@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-function FutureChoreEntry({ chore, index, handleCompletion }) {
+function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
   let lastCompleted;
   if (chore.last_date_completed !== null) {
     lastCompleted = 'Last completed ';
@@ -18,7 +18,7 @@ function FutureChoreEntry({ chore, index, handleCompletion }) {
     lastCompleted = 'Never completed';
   }
   return (
-    <div className="row future-chore-entry">
+    <div className="row future-chore-entry" onClick={() => editChore(index)}>
       <input
         className="done"
         type="checkbox"

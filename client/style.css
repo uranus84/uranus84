@@ -24,10 +24,18 @@ h1, h2, h3, h4, h5, h6 {
   margin: 10% auto;
 }
 
-.login input, .login button {
-  margin: .5em;
+.login input[type="text"], .login input[type="password"] {
   font-size: 16px;
   line-height: 1.5em;
+}
+
+.login input[type="submit"], .login button {
+  background-color: white;
+  border: 1px solid gray;
+  padding: .5em;
+  width: 80%;
+  border-radius: 5px;
+  height: 3em;
 }
 
 #username, #password {
@@ -49,11 +57,7 @@ input, button {
   border-radius: 5px;
 }
 
-input[type="submit"], button {
-  background-color: white;
-  border: 1px solid gray;
-  padding: 2em;
-}
+
 
 #chore_name {
   width: 40%;

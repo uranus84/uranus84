@@ -14,6 +14,7 @@ function FutureChores(props) {
             key={index}
             index={index}
             handleCompletion={props.handleCompletion}
+            editChore={props.editChore}
           />
         );
       })}

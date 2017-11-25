@@ -44,7 +44,7 @@ class AddChore extends React.Component {
   render() {
     return (
       <div className="row add-chore">
-        <form id="add-chore-form" onSubmit={e => this.handleSubmit(e)} >
+        <form id="add-chore-form" onSubmit={e => this.handleSubmit(e)}>
           Chore:
           <input id="chore_name" type="text" onChange={e => this.handleChange(e)} />
           Date:

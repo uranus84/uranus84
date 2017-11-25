@@ -9,8 +9,9 @@ import AddChore from './AddChore.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    console.log('inside constructor');
     this.state = {
+      // user_id: 1,
+      username: 'amy',
       todaysChores: [
         {
           id: 1,
@@ -74,9 +75,9 @@ class App extends React.Component {
 
   fetchChores() {
     const app = this;
+    // add this option to GET: { options: { user_id: this.state.user_id } }
     axios.get('/chores')
       .then((response) => {
-        console.log(response);
         app.setState({
           todaysChores: response.data.todayChores,
           futureChores: response.data.futureChores,
@@ -86,7 +87,6 @@ class App extends React.Component {
   }
 
   handleCompletionToday(index) {
-    console.log('inside completion method');
     const chores = this.state.todaysChores;
     chores[index].completed = true;
     this.setState({ todaysChores: chores });
@@ -100,7 +100,6 @@ class App extends React.Component {
   }
 
   handleCompletionFuture(index) {
-    console.log('inside completion method');
     const chores = this.state.futureChores;
     chores[index].completed = true;
     this.setState({ futureChores: chores });
@@ -114,9 +113,11 @@ class App extends React.Component {
   }
   
   render() {
-    console.log('rendering');
     return (
       <div className="container">
+        <div className="row">
+          <h4>Hi, {this.state.username}!</h4>
+        </div>
         <div className="row">
           <h1>Household Management</h1>
         </div>

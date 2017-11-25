@@ -1,8 +1,11 @@
--- DROP DATABASE IF EXISTS choreApp;
 
--- CREATE DATABASE choreApp;
+/*********FOR LOCAL TESTING*****************/
+DROP DATABASE IF EXISTS choreApp;
 
--- USE choreApp;
+CREATE DATABASE choreApp;
+
+USE choreApp;
+/*******************************************/
 
 CREATE TABLE groups (
   id int PRIMARY KEY AUTO_INCREMENT,

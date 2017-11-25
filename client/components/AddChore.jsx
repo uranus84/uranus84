@@ -1,9 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import Datetime from 'react-datetime';
-// import DayPickerInput from 'react-day-picker/DayPickerInput';
-// import 'react-day-picker/lib/style.css';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 
 class AddChore extends React.Component {
   // future implementation should have a "custom" frequency picker as well
@@ -48,11 +47,11 @@ class AddChore extends React.Component {
           Chore:
           <input id="chore_name" type="text" onChange={e => this.handleChange(e)} />
           Date:
-          <Datetime
-            id="next_date"
-            open={false}
-            inputProps={{ placeholder: 'select a date' }}
-            onChange={e => this.handleDateChange(e)}
+          <DayPickerInput
+            name="next_date"
+            placeholder="MM/DD/YYYY"
+            format="MM/DD/YYYY"
+            onDayChange={this.handleDayChange}
           />
           Frequency:
           <select id="frequency" onChange={e => this.handleChange(e)}>
@@ -67,13 +66,6 @@ class AddChore extends React.Component {
     );
   }
 }
-
-// <DayPickerInput
-// name="next_date"
-// placeholder="MM/DD/YYYY"
-// format="MM/DD/YYYY"
-// onDayChange={this.handleDayChange}
-// />
 
 export default AddChore;
 

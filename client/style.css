@@ -1,0 +1,90 @@
+body {
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+.add-chore, .todays-chores-list, .future-chores-list {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* ====== LOGIN / SIGNUP ========== */
+
+.login {
+  padding: 2em;
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 50%;
+  heigth: 50%;
+  position: relative;
+  margin: 10% auto;
+}
+
+.login input[type="text"], .login input[type="password"] {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.login input[type="submit"], .login button {
+  background-color: white;
+  border: 1px solid gray;
+  padding: .5em;
+  width: 80%;
+  border-radius: 5px;
+  height: 3em;
+}
+
+#username, #password {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+/* ====== ADD CHORE ========== */
+
+.add-chore input, .add-chore select, .add-chore button, .datepicker {
+  margin: .5em;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+input, button {
+  border-radius: 5px;
+}
+
+
+
+#chore_name {
+  width: 40%;
+  padding: .5em;
+}
+
+
+/* ========== CHORE LIST =============*/
+  
+.todays-chores-list, .future-chores-list {
+  padding: 2em;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.todays-chore-entry span, .future-chore-entry span {
+  display: inline-block;
+}
+
+.chore-name {
+  font-size: 1.5em;
+  width: 40%;
+}
+
+.chore-last-done {
+  font-size: .75em;
+  font-style: italic;
+  font-color: gray;
+  width: 25%;
+}

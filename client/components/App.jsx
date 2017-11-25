@@ -9,8 +9,9 @@ import AddChore from './AddChore.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    console.log('inside constructor');
     this.state = {
+      // user_id: 1,
+      username: 'amy',
       todaysChores: [
         {
           id: 1,
@@ -68,15 +69,15 @@ class App extends React.Component {
     this.handleCompletionFuture = this.handleCompletionFuture.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchChores.call(this);
   }
 
   fetchChores() {
     const app = this;
+    // add this option to GET: { options: { user_id: this.state.user_id } }
     axios.get('/chores')
       .then((response) => {
-        console.log(response);
         app.setState({
           todaysChores: response.data.todayChores,
           futureChores: response.data.futureChores,
@@ -86,9 +87,8 @@ class App extends React.Component {
   }
 
   handleCompletionToday(index) {
-    console.log('inside completion method');
     const chores = this.state.todaysChores;
-    chores[index].completed = true;
+    chores[index].completed = '1';
     this.setState({ todaysChores: chores });
 
     axios.put('/chores', { id: chores[index].id })
@@ -100,10 +100,11 @@ class App extends React.Component {
   }
 
   handleCompletionFuture(index) {
-    console.log('inside completion method');
     const chores = this.state.futureChores;
-    chores[index].completed = true;
+    chores[index].completed = '1';
     this.setState({ futureChores: chores });
+    console.log(this.state.futureChores);
+    console.log(this.state.futureChores);
 
     axios.put('/chores', { id: chores[index].id })
       .then((response) => {
@@ -112,11 +113,12 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
-  
   render() {
-    console.log('rendering');
     return (
       <div className="container">
+        <div className="row">
+          <h4>Hi, {this.state.username}!</h4>
+        </div>
         <div className="row">
           <h1>Household Management</h1>
         </div>

@@ -35,6 +35,7 @@ class App extends React.Component {
     };
     this.handleCompletionToday = this.handleCompletionToday.bind(this);
     this.handleCompletionFuture = this.handleCompletionFuture.bind(this);
+    this.handleLogout = this.props.handleLogout.bind(this);
   }
 
   componentDidMount() {
@@ -81,6 +82,17 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
+
+  userLogout() {
+    axios.get('/logout')
+      .then((response) => {
+        if (response.data.view === 'login') {
+          this.handleLogout(response.data.view);
+        }
+      })
+      .catch(err => console.log(err));
+  }
+  
   render() {
     return (
       <div className="container">
@@ -104,6 +116,11 @@ class App extends React.Component {
             chores={this.state.futureChores}
             handleCompletion={this.handleCompletionFuture}
           />
+        </div>
+        <div className="button">
+          <button type="button" onClick={() => {this.userLogout()}}>
+            Logout
+          </button>
         </div>
       </div>
     );

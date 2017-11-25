@@ -22,7 +22,7 @@ function FutureChoreEntry({ chore, index, handleCompletion }) {
       <input
         className="done"
         type="checkbox"
-        checked={chore.completed}
+        checked={chore.completed === '1'}
         onChange={() => handleCompletion(index)}
       />
       <span className="chore-name">{chore.chore_name}</span>

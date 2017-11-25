@@ -2,6 +2,21 @@ import React from 'react';
 import moment from 'moment';
 
 function FutureChoreEntry({ chore, index, handleCompletion }) {
+  let lastCompleted;
+  if (chore.last_date_completed) {
+    lastCompleted = 'Last completed ';
+    lastCompleted += moment(chore.last_date_completed)
+      .calendar(null, {
+        lastDay: '[Yesterday]',
+        sameDay: '[Today]',
+        nextDay: '[Tomorrow]',
+        lastWeek: '[last] dddd',
+        nextWeek: 'dddd',
+        sameElse: 'L',
+      });
+  } else {
+    lastCompleted = 'Never completed';
+  }
   return (
     <div className="row future-chore-entry">
       <input
@@ -25,7 +40,7 @@ function FutureChoreEntry({ chore, index, handleCompletion }) {
         } |
       </span>
       <span className="chore-last-done">
-        | Last Completed {moment(chore.last_date_completed).fromNow()}
+        | {lastCompleted}
       </span>
     </div>
   );

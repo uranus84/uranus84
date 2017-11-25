@@ -1,6 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy;
 var dbConnection = require('./index.js');
-const flash = require('connect-flash');
 
 dbConnection.query('USE heroku_49fb8337b7fd0ce');
 
@@ -34,7 +33,7 @@ module.exports = function(passport) {
 
         if (rows.length) {
           console.log('Username taken');
-          return done(null, false, req.flash('signupMessage', 'That username is already taken.')); // req.flash is the way to set flashdata using connect-flash
+          return done(null, false);
         } else {
           // if there is no user with that username create the user
           var newUserMysql = {
@@ -64,13 +63,13 @@ module.exports = function(passport) {
 
         if (!rows.length) {
           console.log('Fails to find user.')
-          return done(null, false, req.flash('loginMessage', 'No user found.'));
+          return done(null, false);
         } 
         
         // if the user is found but the password is wrong
         if (!( rows[0].password == password)) {
           console.log('Found user, incorrect password');
-          return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+          return done(null, false);
         }
         // everything ok, return successful user
         console.log('All gucci, send it through');

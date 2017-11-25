@@ -8,9 +8,12 @@ let dbConnection = mysql.createConnection({
   host: 'us-cdbr-iron-east-05.cleardb.net',
   user: 'b912fe68a70b8b',
   password: '35dc2118',
-  database: 'heroku_49fb8337b7fd0ce'
-  user: 'root',
-  database: 'choreApp',
+  database: 'heroku_49fb8337b7fd0ce',
+
+  // Info commented below links to local db for testing purposes, above data is for production
+
+  // user: 'root',
+  // database: 'choreApp',
   stringifyObjects: true,
 });
 

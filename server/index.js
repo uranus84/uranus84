@@ -42,7 +42,6 @@ app.post('/login', passport.authenticate('local-login'), (req, res) => {
 
 app.get('/logout', (req, res) => {
   req.logout();
-  res.writeHead(200, { 'Content-Type': 'application/json' });
   res.send(JSON.stringify({ view: 'login' }));
 });
 

@@ -17,7 +17,8 @@ const getChores = (req, res) => {
         todayChores: [],
         futureChores: [],
       };
-      const currDate = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
+      const currDate = moment().format('YYYY-MM-DD');
+      console.log('currdate', currDate);
       for (let i = 0; i < result.length; i++) {
         let obj = {
           id: result[i].id,
@@ -69,35 +70,39 @@ const deleteChores = (req, res) => {
 };
 
 const updateChores = (req, res) => {
+  console.log('im update inside updatechores', req.body);
   return new Promise((resolve, reject) => {
     let freq = '';
     let date = null;
-    const selectQuery = 'SELECT next_date, frequency FROM chores WHERE id = 1';
+    const selectQuery = `SELECT next_date, frequency FROM chores WHERE id = '${req.body.id}'`;
     db.query(selectQuery, (err, result) => {
       if (err) {
         return reject(err);
       }
-      //console.log(result[0].next_date, 'result');
+      console.log(result, 'result');
       freq = result[0].frequency;
-      date = result[0].next_date;
-      //console.log('freq', freq);
-      //console.log('date', date);
+      let formattedDate = (JSON.stringify(result[0].next_date).slice(1, 11));
+      let dateToBeUpdated = null;
       if (freq === 'daily') {
-      	let aDate = (JSON.stringify(result[0].next_date).slice(1, 11)).split('-');
-        let newDate = moment([aDate[0], aDate[1] - 1, aDate[2]]).add(1, 'days').format('YYYY-MM-DD');
-        //console.log(newDate);
-        const updateQuery = `UPDATE chores SET  next_date ='${newDate}' where id = 1`;
-        db.query(updateQuery, (err, result) => {
-          if (err) {
-            return reject(err);
-          }
-           //res.json('data Updated Successfully');
-           console.log(result);
-           return resolve(result);
-        });
-     }
-     });
-    
+        dateToBeUpdated = moment(formattedDate).add(1, 'days').format('YYYY-MM-DD');
+      } else if (freq === 'weekly') {
+        console.log(formattedDate, 'formattedDate');
+        dateToBeUpdated = moment(formattedDate).add(7, 'days').format('YYYY-MM-DD');
+        console.log('dateToBeUpdated' ,dateToBeUpdated);
+      } else if (freq === 'bi-weekly') {
+        dateToBeUpdated = moment(formattedDate).add(14, 'days').format('YYYY-MM-DD');
+      } else if (freq === 'monthly') {
+        dateToBeUpdated = moment(formattedDate).add(1, 'month').format('YYYY-MM-DD');
+      }
+      const updateQuery = `UPDATE chores SET  next_date ='${dateToBeUpdated}' WHERE id = '${req.body.id}'`;
+      db.query(updateQuery, (err, result) => {
+        if (err) {
+          return reject(err);
+        }
+        res.json('data Updated Successfully');
+        return resolve(result);
+      });
+    });
   });
 };
 

@@ -54,17 +54,15 @@ app.get('/test', (req, res) => {
 });
 
 
-modelDB.updateChores();
+//modelDB.updateChores();
 
 // get request to /chores route
 app.get('/chores', (req, res) => {
-	console.log('im in server get');
   modelDB.getChores(req, res);
 });
 
-
 // post request to /chores route
-app.post('/chores', (req, res, req1) => {
+app.post('/chores', (req, res) => {
   modelDB.postChores(req, res, req.body);
 });
 

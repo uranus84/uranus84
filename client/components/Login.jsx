@@ -47,6 +47,7 @@ class Login extends React.Component {
     return (
       <div className="login">
         <h1>TidyUp</h1>
+        <h3>Welcome Back!</h3>
         <div className="login-container">
           <form action="javascript:void(0)" onSubmit={this.submitLoginCredentials}>
             <div>
@@ -65,10 +66,10 @@ class Login extends React.Component {
                 onChange={this.onChangePassword}
               />
             </div>
-            <input type="submit" className="login" value="Login" />
+            <input type="submit" className="login-button" value="Login" />
           </form>
-          <button type="button" className="signup" onClick={() => { this.signupNewUser(); }}>
-            Sign up
+          <button type="button" className="signup-button" onClick={() => { this.signupNewUser(); }}>
+            Create New Account
           </button>
         </div>
       </div>

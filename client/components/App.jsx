@@ -69,7 +69,7 @@ class App extends React.Component {
     this.handleCompletionFuture = this.handleCompletionFuture.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchChores.call(this);
   }
 
@@ -111,7 +111,6 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
-  
   render() {
     return (
       <div className="container">

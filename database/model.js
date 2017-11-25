@@ -28,7 +28,7 @@ const getChores = (req, res) => {
           last_date_completed: result[i].last_date_completed,
           completed: result[i].completed,
         };
-        if (currDate === result[i].next_date) {
+        if (JSON.stringify(currDate) === `${JSON.stringify(result[i].next_date).slice(0, 11)}"`) {
           data.todayChores.push(obj);
         } else {
           data.futureChores.push(obj);

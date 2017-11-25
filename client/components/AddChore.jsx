@@ -32,8 +32,9 @@ class AddChore extends React.Component {
       frequency: this.state.frequency,
       user_id: 1,
     })
-      .then(() => {
-        axios.get('/chores');
+      .then((response) => {
+        console.log('posted a chore to server!');
+        console.log(response);
       })
       .catch((err) => {
         console.log(err);

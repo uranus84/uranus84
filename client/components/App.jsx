@@ -22,6 +22,7 @@ class App extends React.Component {
     this.handleLogout = this.props.handleLogout.bind(this);
     this.addChore = this.addChore.bind(this);
     this.handleCompletion = this.handleCompletion.bind(this);
+    this.deleteChore = this.deleteChore.bind(this);
     this.submitChoreEdits = this.submitChoreEdits.bind(this);
     this.editTodayChore = this.editTodayChore.bind(this);
     this.editFutureChore = this.editFutureChore.bind(this);
@@ -63,6 +64,17 @@ class App extends React.Component {
       })
       .catch(err => console.log(err));
   }
+
+  deleteChore(index) {
+    console.log('hello from App delete chore!');
+
+    axios.delete('/chores', { data: { id: index } })
+      .then(() => {
+        this.fetchChores();
+      })
+      .catch(err => console.log(err));
+  }
+
   submitChoreEdits(index, obj, choreType) {
     this.setState({ [`${choreType}EditIndex`]: null });
 
@@ -111,6 +123,7 @@ class App extends React.Component {
             chores={this.state.todaysChores}
             handleCompletion={this.handleCompletion}
             editChore={this.editTodayChore}
+            deleteChore={this.deleteChore}
             submitChore={this.submitChoreEdits}
             editComponent={this.state.todayEditIndex}
           />
@@ -120,9 +133,15 @@ class App extends React.Component {
             chores={this.state.futureChores}
             handleCompletion={this.handleCompletion}
             editChore={this.editFutureChore}
+            deleteChore={this.deleteChore}
             submitChore={this.submitChoreEdits}
             editComponent={this.state.futureEditIndex}
           />
+        </div>
+        <div className="button">
+          <button type="button" onClick={() => {this.userLogout()}}>
+            Logout
+          </button>
         </div>
       </div>
     );

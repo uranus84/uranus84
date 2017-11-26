@@ -36,7 +36,7 @@ const getChores = (req, res, userId) => {
         obj = {};
       }
       res.json(data);
-      console.log('data', data);
+      // console.log('data', data);
       return resolve(result);
     });
   });

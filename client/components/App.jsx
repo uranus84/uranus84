@@ -18,13 +18,13 @@ class App extends React.Component {
       todayEditIndex: null,
       futureEditIndex: null,
     };
-    this.handleCompletion = this.handleCompletion.bind(this);
-    this.editTodayChore = this.editTodayChore.bind(this);
-    this.submitChoreEdits = this.submitChoreEdits.bind(this);
-    this.editFutureChore = this.editFutureChore.bind(this);
-    this.handleLogout = this.props.handleLogout.bind(this);
     this.fetchChores = this.fetchChores.bind(this);
+    this.handleLogout = this.props.handleLogout.bind(this);
     this.addChore = this.addChore.bind(this);
+    this.handleCompletion = this.handleCompletion.bind(this);
+    this.submitChoreEdits = this.submitChoreEdits.bind(this);
+    this.editTodayChore = this.editTodayChore.bind(this);
+    this.editFutureChore = this.editFutureChore.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +33,6 @@ class App extends React.Component {
 
   fetchChores() {
     const app = this;
-    // add this option to GET: { options: { user_id: this.state.user_id } }
     axios.get('/chores')
       .then((response) => {
         app.setState({
@@ -45,17 +44,11 @@ class App extends React.Component {
   }
 
   addChore(chore) {
-    console.log('inside addChore');
     axios.post('/chores', chore)
-      .then((response) => {
-        console.log('posted a chore to server!');
-        console.log(response);
+      .then(() => {
         this.fetchChores();
       })
-      .catch((err) => {
-        console.log('here is an error inside addChore');
-        console.log(err);
-      });
+      .catch(err => console.log(err));
   }
 
   handleCompletion(choreType, index) {
@@ -65,9 +58,17 @@ class App extends React.Component {
     this.setState({ [choreType]: chores });
 
     axios.put('/chores', { id: chores[index].id })
-      .then((response) => {
+      .then(() => {
         console.log('completed a chore');
-        console.log(response);
+      })
+      .catch(err => console.log(err));
+  }
+  submitChoreEdits(index, obj, choreType) {
+    this.setState({ [`${choreType}EditIndex`]: null });
+
+    axios.put('/editChore', obj)
+      .then(() => {
+        this.fetchChores();
       })
       .catch(err => console.log(err));
   }
@@ -76,37 +77,9 @@ class App extends React.Component {
     this.setState({ todayEditIndex: index });
   }
 
-  submitChoreEdits(index, obj, choreType) {
-    this.setState({ [`${choreType}EditIndex`]: null });
-
-    // *Uncomment this when TJ database route is up*
-    axios.put('/editChore', obj)
-      .then((response) => {
-        console.log('Chore updated');
-        console.log(response);
-        this.fetchChores();
-      })
-      .catch(err => console.log(err));
-  }
-
   editFutureChore(index) {
     this.setState({ futureEditIndex: index });
   }
-
-  // submitEditsFutureChore(index, obj) {
-  //   const chores = this.state.futureChores;
-  //   chores[index] = obj;
-  //   this.setState({ futureEditIndex: null });
-
-  //   // *Uncomment this when TJ database route is up*
-  //   axios.put('/editChore', obj)
-  //     .then((response) => {
-  //       console.log('Chore updated');
-  //       console.log(response);
-  //       this.fetchChores();
-  //     })
-  //     .catch(err => console.log(err));
-  // }
 
   userLogout() {
     axios.get('/logout')

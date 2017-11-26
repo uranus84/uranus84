@@ -25,10 +25,12 @@ class App extends React.Component {
     this.editFutureChore = this.editFutureChore.bind(this);
     this.submitEditsFutureChore = this.submitEditsFutureChore.bind(this);
     this.handleLogout = this.props.handleLogout.bind(this);
+    this.fetchChores = this.fetchChores.bind(this);
+    this.addChore = this.addChore.bind(this);
   }
 
   componentDidMount() {
-    this.fetchChores.call(this);
+    this.fetchChores();
   }
 
   fetchChores() {
@@ -42,6 +44,20 @@ class App extends React.Component {
         });
       })
       .catch(err => console.log(err));
+  }
+
+  addChore(chore) {
+    console.log('inside addChore');
+    axios.post('/chores', chore)
+      .then((response) => {
+        console.log('posted a chore to server!');
+        console.log(response);
+        this.fetchChores();
+      })
+      .catch((err) => {
+        console.log('here is an error inside addChore');
+        console.log(err);
+      });
   }
 
   handleCompletionToday(index) {
@@ -82,7 +98,7 @@ class App extends React.Component {
     this.setState({ todaysChores: chores });
     this.setState({ todayEditIndex: null });
 
-    ///////////*Uncomment this when TJ database route is up*///////////////
+    // *Uncomment this when TJ database route is up*
     // axios.put('/editChore', { task: chores[index] })
     //   .then((response) => {
     //     console.log('Chore updated');
@@ -101,7 +117,7 @@ class App extends React.Component {
     this.setState({ futureChores: chores });
     this.setState({ futureEditIndex: null });
 
-    ///////////*Uncomment this when TJ database route is up*///////////////
+    // *Uncomment this when TJ database route is up*
     // axios.put('/editChore', { task: chores[index] })
     //   .then((response) => {
     //     console.log('Chore updated');
@@ -130,7 +146,7 @@ class App extends React.Component {
           <h1>Household Management</h1>
         </div>
         <div className="row">
-          <AddChore user_id={this.state.user_id} />
+          <AddChore addChore={this.addChore} user_id={this.state.user_id} />
         </div>
         <div className="row">
           <TodaysChores

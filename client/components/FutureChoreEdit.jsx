@@ -66,7 +66,7 @@ class FutureChoreEdit extends React.Component {
             value={this.state.next_date}
             onChange={e => this.handleDateChange(e)}
           />
-          <button type="submit">Add Chore</button>
+          <button type="submit">Edit Chore</button>
         </form>
       </div>
     );

@@ -19,17 +19,19 @@ function TodaysChoreEntry({ chore, index, handleCompletion, editChore }) {
     lastCompleted = 'Never completed';
   }
   return (
-    <div className="row todays-chore-entry" onClick={() => editChore(index)}>
+    <div className="row today-chore-entry">
       <input
         className="done"
         type="checkbox"
         checked={chore.completed === '1'}
         onChange={() => handleCompletion(index)}
       />
-      <span className="chore-name">{chore.chore_name}</span>
-      <span className="chore-freq">{choreFreq}</span>
-      <span className="chore-last-done">
-        {lastCompleted}
+      <span onClick={() => editChore(index)}>
+        <span className="chore-name">{chore.chore_name}</span>
+        <span className="chore-freq">{choreFreq}</span>
+        <span className="chore-last-done">
+          {lastCompleted}
+        </span>
       </span>
     </div>
   );

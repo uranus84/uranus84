@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 
 class FutureChoreEdit extends React.Component {
   // future implementation should have a "custom" frequency picker as well
@@ -10,6 +12,7 @@ class FutureChoreEdit extends React.Component {
       next_date: this.props.chore.next_date,
       frequency: this.props.chore.frequency,
     };
+    this.deleteChore = this.deleteChore.bind(this);
   }
 
   handleChange(event) {
@@ -18,8 +21,8 @@ class FutureChoreEdit extends React.Component {
     });
   }
 
-  handleDateChange(event) {
-    this.setState({ next_date: moment(event.target.value).format('YYYY-MM-DD') });
+  handleDayChange(e) {
+    this.setState({ next_date: moment(e).format('YYYY-MM-DD') });
   }
 
   completedEdits(e) {
@@ -33,6 +36,10 @@ class FutureChoreEdit extends React.Component {
       completed: this.props.chore.completed,
     };
     this.props.submitChore(this.props.index, editedChoreObj, 'future');
+  }
+
+  deleteChore() {
+    this.props.deleteChore(this.props.chore.id);
   }
 
   render() {
@@ -59,14 +66,17 @@ class FutureChoreEdit extends React.Component {
             <option value="bi-weekly">Bi-Weekly</option>
             <option value="monthly">Monthly</option>
           </select>
-          <input
-            id="currentDate"
-            type="date"
-            value={this.state.next_date}
-            onChange={e => this.handleDateChange(e)}
+          <DayPickerInput
+            name="next_date"
+            placeholder="MM/DD/YYYY"
+            format="MM/DD/YYYY"
+            onDayChange={e => this.handleDayChange(e)}
           />
           <button type="submit">Edit Chore</button>
         </form>
+        <button type="button" onClick={() => { this.deleteChore(); }}>
+          Delete
+        </button>
       </div>
     );
   }

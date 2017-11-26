@@ -20,9 +20,8 @@ class App extends React.Component {
     };
     this.handleCompletion = this.handleCompletion.bind(this);
     this.editTodayChore = this.editTodayChore.bind(this);
-    this.submitEditsTodayChore = this.submitEditsTodayChore.bind(this);
+    this.submitChoreEdits = this.submitChoreEdits.bind(this);
     this.editFutureChore = this.editFutureChore.bind(this);
-    this.submitEditsFutureChore = this.submitEditsFutureChore.bind(this);
     this.handleLogout = this.props.handleLogout.bind(this);
     this.fetchChores = this.fetchChores.bind(this);
     this.addChore = this.addChore.bind(this);
@@ -77,39 +76,37 @@ class App extends React.Component {
     this.setState({ todayEditIndex: index });
   }
 
-  submitEditsTodayChore(index, obj) {
-    const chores = this.state.todaysChores;
-    chores[index] = obj;
-    this.setState({ todaysChores: chores });
-    this.setState({ todayEditIndex: null });
+  submitChoreEdits(index, obj, choreType) {
+    this.setState({ [`${choreType}EditIndex`]: null });
 
     // *Uncomment this when TJ database route is up*
-    // axios.put('/editChore', { task: chores[index] })
-    //   .then((response) => {
-    //     console.log('Chore updated');
-    //     console.log(response);
-    //   })
-    //   .catch(err => console.log(err));
+    axios.put('/editChore', obj)
+      .then((response) => {
+        console.log('Chore updated');
+        console.log(response);
+        this.fetchChores();
+      })
+      .catch(err => console.log(err));
   }
 
   editFutureChore(index) {
     this.setState({ futureEditIndex: index });
   }
 
-  submitEditsFutureChore(index, obj) {
-    const chores = this.state.futureChores;
-    chores[index] = obj;
-    this.setState({ futureChores: chores });
-    this.setState({ futureEditIndex: null });
+  // submitEditsFutureChore(index, obj) {
+  //   const chores = this.state.futureChores;
+  //   chores[index] = obj;
+  //   this.setState({ futureEditIndex: null });
 
-    // *Uncomment this when TJ database route is up*
-    // axios.put('/editChore', { task: chores[index] })
-    //   .then((response) => {
-    //     console.log('Chore updated');
-    //     console.log(response);
-    //   })
-    //   .catch(err => console.log(err));
-  }
+  //   // *Uncomment this when TJ database route is up*
+  //   axios.put('/editChore', obj)
+  //     .then((response) => {
+  //       console.log('Chore updated');
+  //       console.log(response);
+  //       this.fetchChores();
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
   userLogout() {
     axios.get('/logout')
@@ -141,7 +138,7 @@ class App extends React.Component {
             chores={this.state.todaysChores}
             handleCompletion={this.handleCompletion}
             editChore={this.editTodayChore}
-            submitChore={this.submitEditsTodayChore}
+            submitChore={this.submitChoreEdits}
             editComponent={this.state.todayEditIndex}
           />
         </div>
@@ -150,7 +147,7 @@ class App extends React.Component {
             chores={this.state.futureChores}
             handleCompletion={this.handleCompletion}
             editChore={this.editFutureChore}
-            submitChore={this.submitEditsFutureChore}
+            submitChore={this.submitChoreEdits}
             editComponent={this.state.futureEditIndex}
           />
         </div>

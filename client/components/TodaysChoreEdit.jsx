@@ -22,7 +22,8 @@ class TodayChoreEdit extends React.Component {
     this.setState({ next_date: moment(event.target.value).format('YYYY-MM-DD') });
   }
 
-  completedEdits() {
+  completedEdits(e) {
+    e.preventDefault();
     const editedChoreObj = {
       id: this.props.chore.id,
       chore_name: this.state.chore_name,
@@ -31,9 +32,7 @@ class TodayChoreEdit extends React.Component {
       last_date_completed: this.props.chore.last_date_completed,
       completed: this.props.chore.completed,
     };
-    console.log(this.props.chore.index);
-    console.log(editedChoreObj);
-    this.props.submitChore(this.props.index, editedChoreObj);
+    this.props.submitChore(this.props.index, editedChoreObj, 'today');
   }
 
   render() {

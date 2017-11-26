@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
+  const choreFreq = `${chore.frequency.charAt(0).toUpperCase()}${chore.frequency.slice(1)}`;
   let lastCompleted;
   if (chore.last_date_completed !== null) {
     lastCompleted = 'Last completed ';
@@ -26,7 +27,7 @@ function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
         onChange={() => handleCompletion(index)}
       />
       <span className="chore-name">{chore.chore_name}</span>
-      <span className="chore-freq">{chore.frequency}</span>
+      <span className="chore-freq">{choreFreq}</span>
       <span className="chore-due">
         Due {moment(chore.next_date)
           .calendar(null, {

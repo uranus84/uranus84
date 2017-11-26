@@ -12,6 +12,11 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
+.welcome {
+  float: right;
+  padding-right: 5%
+}
+
 /* ====== LOGIN / SIGNUP ========== */
 
 .login {
@@ -66,7 +71,7 @@ input, button {
 
 
 #chore_name {
-  width: 40%;
+  width: 35%;
   padding: .5em;
 }
 
@@ -79,18 +84,22 @@ input, button {
   border-radius: 10px;
 }
 
-.todays-chore-entry span, .future-chore-entry span {
+.chore-name, .chore-last-done, .chore-freq, .chore-due {
   display: inline-block;
+  width: 15%;
 }
 
 .chore-name {
   font-size: 1.5em;
-  width: 40%;
+  width: 35%;
+}
+
+.chore-due {
+  width: 20%;
 }
 
 .chore-last-done {
   font-size: .75em;
   font-style: italic;
   font-color: gray;
-  width: 25%;
 }

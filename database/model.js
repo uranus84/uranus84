@@ -108,7 +108,7 @@ const updateChores = (req, res) => {
 const editChores = (req, res) => {
   const chore = req.body;
   return new Promise((resolve, reject) => {
-    const updateQuery = `UPDATE chores SET next_date = '${chore.next_date}', chore_name = '${chore.chore_name}', frequency = ${chore.frequency} WHERE id = '${req.body.id}'`;
+    const updateQuery = `UPDATE chores SET next_date = '${chore.next_date}', chore_name = '${chore.chore_name}', frequency = '${chore.frequency}' WHERE id = '${req.body.id}'`;
     db.query(updateQuery, (error, results) => {
       if (error) {
         return reject(error);

@@ -55,7 +55,7 @@ class AddChore extends React.Component {
             <option value="bi-weekly">Bi-Weekly</option>
             <option value="monthly">Monthly</option>
           </select>
-          <button type="submit">Add Chore</button>
+          <button className="add-chore-button" type="submit">Add Chore</button>
         </form>
       </div>
     );

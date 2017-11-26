@@ -124,8 +124,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <h4 className="welcome">Hi, {this.state.username}!</h4>
+        <div className="row welcome">
+          <h4>Hi, {this.state.username}!</h4>
+          <button className="logout-button" onClick={() => { this.userLogout(); }}>
+            Logout
+          </button>
         </div>
         <div className="row">
           <h1>Household Management</h1>
@@ -150,11 +153,6 @@ class App extends React.Component {
             submitChore={this.submitEditsFutureChore}
             editComponent={this.state.futureEditIndex}
           />
-        </div>
-        <div className="button">
-          <button type="button" onClick={() => { this.userLogout(); }}>
-            Logout
-          </button>
         </div>
       </div>
     );

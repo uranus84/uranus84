@@ -17,6 +17,17 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 5%
 }
 
+.logout-button {
+  background-color: white;
+  border: 1px solid gray;
+  padding: .5em;
+  /*width: 10%;*/
+  border-radius: 5px;
+  height: 3em;
+  margin: 1em 0;
+  font-size: 14px;
+}
+
 /* ====== LOGIN / SIGNUP ========== */
 
 .login {

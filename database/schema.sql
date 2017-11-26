@@ -29,7 +29,7 @@ CREATE TABLE chores (
 
 
 /*  Execute this file from the command line by typing:
- *    mysql -u root < path of the this file/schema.sql
+ *    mysql -u root < database/schema.sql
  *  to create the database and the tables.*/
 
 /* Refactor to routing. File should be executed only once similarly to above

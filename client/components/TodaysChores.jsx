@@ -16,6 +16,7 @@ function TodaysChores(props) {
               key={index}
               index={index}
               submitChore={props.submitChore}
+              deleteChore={props.deleteChore}
             />
           );
         } else {

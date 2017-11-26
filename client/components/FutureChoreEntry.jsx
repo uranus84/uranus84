@@ -27,7 +27,7 @@ function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
         onChange={() => handleCompletion('futureChores', index)}
       />
       <span onClick={() => editChore(index)}>
-        <span className="chore-name">{chore.chore_name}</span>
+        <span className={`${'chore-name'}${chore.completed === '1' ? ' completed' : ''}`}>{chore.chore_name}</span>
         <span className="chore-freq">{choreFreq}</span>
         <span className="chore-due">
           Due {moment(chore.next_date)

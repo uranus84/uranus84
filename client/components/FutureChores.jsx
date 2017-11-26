@@ -8,18 +8,19 @@ function FutureChores(props) {
       <div className="row">
         <h3>Tomorrow and Beyond</h3>
       </div>
-      {props.chores.map((chore, index) => {
-        if (index === props.editComponent) {
-          return (
-            <FutureChoreEdit
-              chore={chore}
-              key={index}
-              index={index}
-              submitChore={props.submitChore}
-              deleteChore={props.deleteChore}
-            />
-          );
-        } else {
+      <div className="chores-list">
+        {props.chores.map((chore, index) => {
+          if (index === props.editComponent) {
+            return (
+              <FutureChoreEdit
+                chore={chore}
+                key={index}
+                index={index}
+                submitChore={props.submitChore}
+                deleteChore={props.deleteChore}
+              />
+            );
+          }
           return (
             <FutureChoreEntry
               chore={chore}
@@ -29,8 +30,8 @@ function FutureChores(props) {
               editChore={props.editChore}
             />
           );
-        }
-      })}
+        })}
+      </div>
     </div>
   );
 }

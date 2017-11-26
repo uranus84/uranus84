@@ -113,7 +113,7 @@ class App extends React.Component {
           </button>
         </div>
         <div className="row">
-          <h1>Household Management</h1>
+          <h1>TidyUp!</h1>
         </div>
         <div className="row">
           <AddChore addChore={this.addChore} user_id={this.state.user_id} />

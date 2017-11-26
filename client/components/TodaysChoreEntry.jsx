@@ -27,8 +27,20 @@ function TodaysChoreEntry({ chore, index, handleCompletion, editChore }) {
         onChange={() => handleCompletion('todaysChores', index)}
       />
       <span onClick={() => editChore(index)}>
-        <span className="chore-name">{chore.chore_name}</span>
+        <span className={`${'chore-name'}${chore.completed === '1' ? ' completed' : ''}`}>{chore.chore_name}</span>
         <span className="chore-freq">{choreFreq}</span>
+        <span className="chore-due">
+          Due {moment(chore.next_date)
+            .calendar(null, {
+              lastDay: '[Yesterday]',
+              sameDay: '[Today]',
+              nextDay: '[Tomorrow]',
+              lastWeek: '[last] dddd',
+              nextWeek: 'dddd',
+              sameElse: 'L',
+            })
+          }
+        </span>
         <span className="chore-last-done">
           {lastCompleted}
         </span>

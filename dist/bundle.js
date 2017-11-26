@@ -5113,7 +5113,7 @@ module.exports = {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
+ * 
  */
 
 function makeEmptyFunction(arg) {
@@ -5368,7 +5368,7 @@ function clone(d) {
 
 /**
  * Return `d` as a new date with `n` months added.
- *
+ * 
  * @export
  * @param {[type]} d
  * @param {[type]} n
@@ -5396,10 +5396,10 @@ function isSameDay(d1, d2) {
 
 /**
  * Returns `true` if the first day is before the second day.
- *
+ * 
  * @export
- * @param {Date} d1
- * @param {Date} d2
+ * @param {Date} d1 
+ * @param {Date} d2 
  * @returns {Boolean}
  */
 function isDayBefore(d1, d2) {
@@ -5410,10 +5410,10 @@ function isDayBefore(d1, d2) {
 
 /**
  * Returns `true` if the first day is after the second day.
- *
+ * 
  * @export
- * @param {Date} d1
- * @param {Date} d2
+ * @param {Date} d1 
+ * @param {Date} d2 
  * @returns {Boolean}
  */
 function isDayAfter(d1, d2) {
@@ -5519,9 +5519,9 @@ function isDayInRange(day, range) {
 /**
  * Return the year's week number (as per ISO, i.e. with the week starting from monday)
  * for the given day.
- *
+ * 
  * @export
- * @param {Date} day
+ * @param {Date} day 
  * @returns {Number}
  */
 function getWeekNumber(day) {
@@ -6248,7 +6248,7 @@ module.exports = getActiveElement;
  * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
- *
+ * 
  */
 
 /*eslint-disable no-self-compare */
@@ -6320,7 +6320,7 @@ module.exports = shallowEqual;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
+ * 
  */
 
 var isTextNode = __webpack_require__(156);
@@ -18135,10 +18135,10 @@ var _Helpers = __webpack_require__(13);
 
 /**
  * Return `true` if a date matches the specified modifier.
- *
+ * 
  * @export
  * @param {Date} day
- * @param {Any} modifier
+ * @param {Any} modifier 
  * @return {Boolean}
  */
 function dayMatchesModifier(day, modifier) {
@@ -18183,10 +18183,10 @@ function dayMatchesModifier(day, modifier) {
 /**
  * Return the modifiers matching the given day for the given
  * object of modifiers.
- *
+ * 
  * @export
  * @param {Date} day
- * @param {Object} [modifiersObj={}]
+ * @param {Object} [modifiersObj={}] 
  * @return {Array}
  */
 function getModifiersForDay(day) {
@@ -18514,18 +18514,18 @@ function addStyle (obj, options) {
 
 	// If a transform function was defined, run it on the css
 	if (options.transform && obj.css) {
-        result = options.transform(obj.css);
+	    result = options.transform(obj.css);
 
-        if (result) {
-            // If transform returns a value, use that instead of the original css.
-            // This allows running runtime transformations on the css.
-            obj.css = result;
-         else {
-            // If the transform function returns a falsy value, don't add this css.
-            // This allows conditional loading of css
-            return function() {
-                // noop
-            };
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
 	    }
 	}
 
@@ -32109,7 +32109,7 @@ function setValueForProperty(node, name, value) {
   }
 
   {
-
+    
   }
 }
 
@@ -32124,7 +32124,7 @@ function setValueForAttribute(node, name, value) {
   }
 
   {
-
+    
   }
 }
 
@@ -38468,7 +38468,7 @@ var DayPickerInput = function (_React$Component) {
 
     /**
      * Show the Day Picker overlay.
-     *
+     * 
      * @memberof DayPickerInput
      */
     value: function showDayPicker() {
@@ -38479,7 +38479,7 @@ var DayPickerInput = function (_React$Component) {
 
     /**
      * Hide the Day Picker overlay
-     *
+     * 
      * @memberof DayPickerInput
      */
 
@@ -40860,7 +40860,7 @@ module.exports = function (css) {
 		var newUrl;
 
 		if (unquotedOrigUrl.indexOf("//") === 0) {
-            //TODO: should we add protocol?
+		  	//TODO: should we add protocol?
 			newUrl = unquotedOrigUrl;
 		} else if (unquotedOrigUrl.indexOf("/") === 0) {
 			// path should be relative to the base url

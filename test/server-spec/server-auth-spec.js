@@ -1,13 +1,12 @@
-let mysql = require('mysql');
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+const mysql = require('mysql');
+const server = require('../../server/index.js');
+const request = require('supertest');
+
 
 describe('Server Auth Routes', () => {
   describe('POST to signup', () => {
     it('Sends {view: home} to client on authentication success', () => {
-
+      
     });
     it('Sends 401 Unauthorized on authentication failure', () => {
 

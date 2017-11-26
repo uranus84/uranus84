@@ -11,7 +11,7 @@ require('../database/passport.js')(passport);
 const app = express();
 
 // express stuff
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // passport stuff
@@ -19,39 +19,49 @@ app.use(cookieParser());
 app.use(session({
   secret: 'Shh, secret!',
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // initial static page
-app.use(express.static(`${__dirname}./../`));
+app.use(express.static(__dirname + './../'));
 
-// ROUTES
+//////// Routes //////////
 app.get('/', (req, res) => res.send('Server Message!'));
 
 app.post('/signup', passport.authenticate('local-signup'), (req, res) => {
   console.log('Creating signup response');
-  res.send(JSON.stringify({ view: 'home', username: req.user.user_name }));
+  console.log('USER IS ', JSON.stringify(req.user));
+  res.send(JSON.stringify({
+    view: 'home',
+    user_id: req.user.id,
+    username: req.user.user_name
+  }));
 });
 
 app.post('/login', passport.authenticate('local-login'), (req, res) => {
   console.log('Creating login response');
-  res.send(JSON.stringify({ view: 'home', username: req.user.user_name }));
+  res.send(JSON.stringify({ 
+    view: 'home',
+    user_id: req.user.id,
+    username: req.user.user_name
+  }));
 });
 
 app.get('/logout', (req, res) => {
   req.logout();
+  res.writeHead(200, {'Content-Type': 'application/json'});
   res.send(JSON.stringify({ view: 'login' }));
 });
 
 app.get('/test', (req, res) => {
-  console.log('im success im server');
+	console.log('im success im server');
   res.send('Get request success!');
 });
 
 
-// modelDB.updateChores();
+//modelDB.updateChores();
 
 // get request to /chores route
 app.get('/chores', (req, res) => {
@@ -74,5 +84,5 @@ app.put('/chores', (req, res) => {
 });
 
 // Spin it up
-const port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

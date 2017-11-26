@@ -1,11 +1,11 @@
 var LocalStrategy = require('passport-local').Strategy;
-var dbConnection = require('./index.js');
+var dbPool = require('./index.js');
 
 /***********FOR HEROKU DEPLOYMENT*********************/
-dbConnection.query('USE heroku_49fb8337b7fd0ce');
+dbPool.query('USE heroku_49fb8337b7fd0ce');
 
 /***********FOR LOCAL TESTING*************************/
-// dbConnection.query('USE choreApp');
+// dbPool.query('USE choreApp');
 
 // use module exports to IIFEify the function once in server file
 module.exports = function(passport) {
@@ -16,7 +16,7 @@ module.exports = function(passport) {
   });
 
   passport.deserializeUser(function(id, done) {
-    dbConnection.query(`SELECT * FROM users WHERE id = ${id}`,function(err,rows) {
+    dbPool.query(`SELECT * FROM users WHERE id = ${id}`,function(err,rows) {
       done(err, rows[0]);
     });
   });
@@ -28,7 +28,7 @@ module.exports = function(passport) {
     function(req, username, password, done) {
       // check if user already exists
       console.log('In signup auth');
-      dbConnection.query(`SELECT * FROM users WHERE user_name = '${username}'`, [username], function(err, rows) {
+      dbPool.query(`SELECT * FROM users WHERE user_name = '${username}'`, [username], function(err, rows) {
 
         if (err) {
           console.log('oh god the pain');
@@ -46,7 +46,7 @@ module.exports = function(passport) {
           }
         
           var insertQuery = `INSERT INTO users (user_name, password) VALUES ('${username}', '${password}')`;
-          dbConnection.query(insertQuery, [newUserMysql.username, newUserMysql.password], function(err,rows){
+          dbPool.query(insertQuery, [newUserMysql.username, newUserMysql.password], function(err,rows){
             newUserMysql.id = rows.insertId;
             console.log('Making new user');
             return done(null, newUserMysql);
@@ -59,7 +59,7 @@ module.exports = function(passport) {
   passport.use('local-login', new LocalStrategy({ passReqToCallback: true },
     function(req, username, password, done) {
 
-      dbConnection.query(`SELECT * FROM users WHERE user_name = '${username}'`, [username], function(err,rows) {
+      dbPool.query(`SELECT * FROM users WHERE user_name = '${username}'`, [username], function(err,rows) {
 
         if (err) {
           return done(err);

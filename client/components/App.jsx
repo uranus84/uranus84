@@ -124,7 +124,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <h4>Hi, {this.state.username}!</h4>
+          <h4 className="welcome">Hi, {this.state.username}!</h4>
         </div>
         <div className="row">
           <h1>Household Management</h1>

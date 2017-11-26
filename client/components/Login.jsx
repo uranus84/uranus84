@@ -40,7 +40,7 @@ class Login extends React.Component {
 
   signupNewUser() {
     // console.log('Clicked signup!');
-    this.props.handleLogin('signup');
+    this.props.handleLogin({ view: 'signup' });
   }
 
   render() {

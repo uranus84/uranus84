@@ -1,10 +1,10 @@
 
 /*********FOR LOCAL TESTING*****************/
-DROP DATABASE IF EXISTS choreApp;
+-- DROP DATABASE IF EXISTS choreApp;
 
-CREATE DATABASE choreApp;
+-- CREATE DATABASE choreApp;
 
-USE choreApp;
+-- USE choreApp;
 /*******************************************/
 
 CREATE TABLE users (

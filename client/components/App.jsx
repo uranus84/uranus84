@@ -18,8 +18,7 @@ class App extends React.Component {
       todayEditIndex: null,
       futureEditIndex: null,
     };
-    this.handleCompletionToday = this.handleCompletionToday.bind(this);
-    this.handleCompletionFuture = this.handleCompletionFuture.bind(this);
+    this.handleCompletion = this.handleCompletion.bind(this);
     this.editTodayChore = this.editTodayChore.bind(this);
     this.submitEditsTodayChore = this.submitEditsTodayChore.bind(this);
     this.editFutureChore = this.editFutureChore.bind(this);
@@ -60,25 +59,11 @@ class App extends React.Component {
       });
   }
 
-  handleCompletionToday(index) {
-    const chores = this.state.todaysChores;
+  handleCompletion(choreType, index) {
+    const chores = this.state[choreType];
     chores[index].completed = '1';
     chores[index].last_date_completed = moment().format('YYYY-MM-DD');
-    this.setState({ todaysChores: chores });
-
-    axios.put('/chores', { id: chores[index].id })
-      .then((response) => {
-        console.log('completed a chore');
-        console.log(response);
-      })
-      .catch(err => console.log(err));
-  }
-
-  handleCompletionFuture(index) {
-    const chores = this.state.futureChores;
-    chores[index].completed = '1';
-    chores[index].last_date_completed = moment().format('YYYY-MM-DD');
-    this.setState({ futureChores: chores });
+    this.setState({ [choreType]: chores });
 
     axios.put('/chores', { id: chores[index].id })
       .then((response) => {
@@ -151,7 +136,7 @@ class App extends React.Component {
         <div className="row">
           <TodaysChores
             chores={this.state.todaysChores}
-            handleCompletion={this.handleCompletionToday}
+            handleCompletion={this.handleCompletion}
             editChore={this.editTodayChore}
             submitChore={this.submitEditsTodayChore}
             editComponent={this.state.todayEditIndex}
@@ -160,7 +145,7 @@ class App extends React.Component {
         <div className="row">
           <FutureChores
             chores={this.state.futureChores}
-            handleCompletion={this.handleCompletionFuture}
+            handleCompletion={this.handleCompletion}
             editChore={this.editFutureChore}
             submitChore={this.submitEditsFutureChore}
             editComponent={this.state.futureEditIndex}

@@ -41,9 +41,9 @@ const getChores = (req, res, userId) => {
   });
 };
 
-const postChores = (req, res, dataToBeInserted, userId) => {
+const postChores = (req, res, chore, userId) => {
   return new Promise((resolve, reject) => {
-    const insertQuery = `INSERT INTO chores (chore_name,next_date,frequency,last_date_completed,completed,user_id) VALUES ('${dataToBeInserted.chore_name}', '${dataToBeInserted.next_date}', '${dataToBeInserted.frequency}', NULL, false, '${userId}')`;
+    const insertQuery = `INSERT INTO chores (chore_name, next_date, frequency, last_date_completed, completed, user_id) VALUES ('${chore.chore_name}', '${chore.next_date}', '${chore.frequency}', NULL, false, '${userId}')`;
     db.query(insertQuery, (err, result) => {
       if (err) {
         return reject(err);
@@ -68,36 +68,32 @@ const deleteChores = (req, res) => {
 };
 
 const updateChores = (req, res) => {
-  console.log('im update inside updatechores', req.body);
+  let newDate;
+  let freq = '';
+
   return new Promise((resolve, reject) => {
-    let freq = '';
-    // const date = null;
     const selectQuery = `SELECT next_date, frequency FROM chores WHERE id = '${req.body.id}'`;
-    db.query(selectQuery, (err, result) => {
+    db.query(selectQuery, (err, chores) => {
       if (err) {
         return reject(err);
       }
-      console.log(result, 'result');
-      freq = result[0].frequency;
-      const formattedDate = (JSON.stringify(result[0].next_date).slice(1, 11));
-      let dateToBeUpdated = null;
+      freq = chores[0].frequency;
       if (freq === 'daily') {
-        dateToBeUpdated = moment(formattedDate).add(1, 'days').format('YYYY-MM-DD');
+        newDate = moment(chores[0].next_date).add(1, 'days').format('YYYY-MM-DD');
       } else if (freq === 'weekly') {
-        console.log(formattedDate, 'formattedDate');
-        dateToBeUpdated = moment(formattedDate).add(7, 'days').format('YYYY-MM-DD');
-        console.log('dateToBeUpdated', dateToBeUpdated);
+        newDate = moment(chores[0].next_date).add(7, 'days').format('YYYY-MM-DD');
       } else if (freq === 'bi-weekly') {
-        dateToBeUpdated = moment(formattedDate).add(14, 'days').format('YYYY-MM-DD');
+        newDate = moment(chores[0].next_date).add(14, 'days').format('YYYY-MM-DD');
       } else if (freq === 'monthly') {
-        dateToBeUpdated = moment(formattedDate).add(1, 'month').format('YYYY-MM-DD');
+        newDate = moment(chores[0].next_date).add(1, 'month').format('YYYY-MM-DD');
       }
-      const updateQuery = `UPDATE chores SET next_date = '${dateToBeUpdated}', last_date_completed = '${moment().format('YYYY-MM-DD')}' WHERE id = '${req.body.id}'`;
+      const updateQuery = `UPDATE chores SET next_date = '${newDate}', last_date_completed = '${moment().format('YYYY-MM-DD')}' WHERE id = '${req.body.id}'`;
+
       db.query(updateQuery, (error, results) => {
         if (err) {
           return reject(err);
         }
-        res.json('data Updated Successfully');
+        res.json('chore completed');
         return resolve(results);
       });
     });

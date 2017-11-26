@@ -3,41 +3,40 @@ const Promise = require('bluebird');
 // const slice = require('array-slice');
 const moment = require('moment');
 
-
 // response to client in the JSON data format {todayChores:[ ], futureChores: [ ] }
-
 const getChores = (req, res, userId) => {
-  console.log('im getchores');
+  const currDate = moment().format('YYYY-MM-DD');
+  const data = {
+    todayChores: [],
+    futureChores: [],
+  };
+
   return new Promise((resolve, reject) => {
-    db.query(`SELECT * FROM chores WHERE user_id = ${userId}`, (err, result) => {
+    db.query(`SELECT * FROM chores WHERE user_id = ${userId}`, (err, chores) => {
       if (err) {
         return reject(err);
       }
-      const data = {
-        todayChores: [],
-        futureChores: [],
-      };
-      const currDate = moment().format('YYYY-MM-DD');
-      console.log('currdate', currDate);
-      for (let i = 0; i < result.length; i += 1) {
-        let obj = {
-          id: result[i].id,
-          chore_name: result[i].chore_name,
-          next_date: JSON.stringify(result[i].next_date).slice(1, 11),
-          frequency: result[i].frequency,
-          last_date_completed: result[i].last_date_completed,
-          completed: result[i].completed,
+      for (let i = 0; i < chores.length; i += 1) {
+        const obj = {
+          id: chores[i].id,
+          chore_name: chores[i].chore_name,
+          next_date: moment(chores[i].next_date).format('YYYY-MM-DD'),
+          frequency: chores[i].frequency,
+          last_date_completed: chores[i].last_date_completed,
+          completed: chores[i].completed,
         };
-        if (JSON.stringify(currDate) === `${JSON.stringify(result[i].next_date).slice(0, 11)}"`) {
+        // reformat last_date_completed if not null
+        if (obj.last_date_completed) {
+          obj.last_date_completed = moment(obj.last_date_completed).format('YYYY-MM-DD');
+        }
+        if (moment(obj.next_date).isSameOrBefore(currDate)) {
           data.todayChores.push(obj);
         } else {
           data.futureChores.push(obj);
         }
-        obj = {};
       }
       res.json(data);
-      console.log('data', data);
-      return resolve(result);
+      return resolve(chores);
     });
   });
 };

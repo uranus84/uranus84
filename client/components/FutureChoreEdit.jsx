@@ -39,7 +39,7 @@ class FutureChoreEdit extends React.Component {
   }
 
   deleteChore() {
-    this.props.deleteChore(this.props.chore.id);
+    this.props.deleteChore(this.props.chore.id, 'future');
   }
 
   render() {

@@ -65,8 +65,8 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
-  deleteChore(index) {
-    console.log('hello from App delete chore!');
+  deleteChore(index, choreType) {
+    this.setState({ [`${choreType}EditIndex`]: null });
 
     axios.delete('/chores', { data: { id: index } })
       .then(() => {

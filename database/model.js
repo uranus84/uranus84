@@ -49,6 +49,7 @@ const postChores = (req, res, dataToBeInserted, userId) => {
       if (err) {
         return reject(err);
       }
+      res.send('successful post chore');
       return resolve(result);
     });
   });

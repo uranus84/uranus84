@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import moment from 'moment';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
@@ -26,19 +25,14 @@ class AddChore extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('/chores', {
+    console.log('adding a chore');
+    const chore = {
       chore_name: this.state.chore_name,
       next_date: this.state.next_date,
       frequency: this.state.frequency,
       user_id: this.props.user_id,
-    })
-      .then((response) => {
-        console.log('posted a chore to server!');
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    };
+    this.props.addChore(chore);
   }
 
   render() {

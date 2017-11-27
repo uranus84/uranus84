@@ -4,10 +4,8 @@ import ChoreEdit from './ChoreEdit.jsx';
 
 function FutureChores(props) {
   return (
-    <div className="container future-chores-list">
-      <div className="row">
-        <h3>Tomorrow and Beyond</h3>
-      </div>
+    <div className="future-chores-list">
+      <h3>Tomorrow and Beyond</h3>
       <div className="chores-list">
         {props.chores.map((chore, index) => {
           if (index === props.editComponent) {
@@ -18,6 +16,7 @@ function FutureChores(props) {
                 index={index}
                 submitChore={props.submitChore}
                 deleteChore={props.deleteChore}
+                currDate={props.currDate}
               />
             );
           }
@@ -28,6 +27,7 @@ function FutureChores(props) {
               index={index}
               handleCompletion={props.handleCompletion}
               editChore={props.editChore}
+              currDate={props.currDate}
             />
           );
         })}

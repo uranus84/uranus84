@@ -16,6 +16,7 @@ class App extends React.Component {
       futureChores: [],
       todayEditIndex: null,
       futureEditIndex: null,
+      currDate: moment().format('YYYY-MM-DD'),
     };
     this.fetchChores = this.fetchChores.bind(this);
     this.handleLogout = this.props.handleLogout.bind(this);
@@ -120,6 +121,7 @@ class App extends React.Component {
           deleteChore={this.deleteChore}
           submitChore={this.submitChoreEdits}
           editComponent={this.state.todayEditIndex}
+          currDate={this.state.currDate}
         />
         <FutureChores
           chores={this.state.futureChores}
@@ -128,6 +130,7 @@ class App extends React.Component {
           deleteChore={this.deleteChore}
           submitChore={this.submitChoreEdits}
           editComponent={this.state.futureEditIndex}
+          currDate={this.state.currDate}
         />
       </div>
     );

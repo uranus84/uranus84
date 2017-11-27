@@ -34,7 +34,7 @@ class Signup extends React.Component {
       password: this.state.password,
     })
       .then((response) => {
-        console.log(response);
+        console.log('this is the server response to signup: ', response);
         if (response.data.view === 'home') {
           this.props.handleSignup(response.data.view);
         }
@@ -42,7 +42,6 @@ class Signup extends React.Component {
       .catch((error) => {
         console.log(error);
         alert('The username is already taken.');
-        // alert('The username is already taken.');
       });
   }
 

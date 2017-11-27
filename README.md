@@ -1,6 +1,6 @@
-# Chore App Project (name pending)
+# TidyUp Project
 
-> This is a reminders app for your chores.
+> This is a reminders app for your repeating chores.
 
 ## Team
 
@@ -21,7 +21,7 @@
 
 ## Usage
 
-> Used for managing chores for people and/or households. Allows a user to set up to-do tasks that will repeat on a regular basis decided by the user. Tasks can be edited and deleted as need be. Groups can be set and individual users can see other group members' tasks and assign tasks to people in their group.
+> Used for managing chores for individuals. Allows a user to set up to-do tasks that will repeat on a regular basis decided by the user. Tasks can be edited and deleted as need be.
 
 ## Requirements
 
@@ -29,13 +29,18 @@
 - Express
 - React
 - MySQL
-- Webpack
-- babel
 - Passport
 - body-parser
 - Axios
-- Mocha
-- Chai
+- bluebird
+- body-parser
+- moment
+- express-session
+- passport-local
+- react-day-picker
+- react-dom
+- webpack
+- babel
 
 
 ## Development
@@ -45,9 +50,7 @@
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
 ```
 
 ### Roadmap

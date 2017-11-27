@@ -18122,26 +18122,15 @@ var ChoreEdit = function (_React$Component) {
     }
   }, {
     key: 'handleDayChange',
-<<<<<<< HEAD
     value: function handleDayChange(day) {
       this.setState({ next_date: (0, _moment2.default)(day).format('YYYY-MM-DD') });
-=======
-    value: function handleDayChange(e) {
-      this.setState({ next_date: (0, _moment2.default)(e).format('YYYY-MM-DD') });
->>>>>>> Rebase package-lock and bundle update
     }
   }, {
     key: 'completedEdits',
     value: function completedEdits(e) {
       e.preventDefault();
-<<<<<<< HEAD
       var choreType = '';
       if ((0, _moment2.default)(this.state.next_date).isSameOrBefore(this.props.currDate)) {
-=======
-      var currDate = (0, _moment2.default)().format('YYYY-MM-DD');
-      var choreType = '';
-      if ((0, _moment2.default)(this.state.next_date).isSameOrBefore(currDate)) {
->>>>>>> Rebase package-lock and bundle update
         choreType = 'today';
       } else {
         choreType = 'future';
@@ -18159,14 +18148,8 @@ var ChoreEdit = function (_React$Component) {
   }, {
     key: 'deleteChore',
     value: function deleteChore() {
-<<<<<<< HEAD
       var choreType = '';
       if ((0, _moment2.default)(this.state.next_date).isSameOrBefore(this.props.currDate)) {
-=======
-      var currDate = (0, _moment2.default)().format('YYYY-MM-DD');
-      var choreType = '';
-      if ((0, _moment2.default)(this.state.next_date).isSameOrBefore(currDate)) {
->>>>>>> Rebase package-lock and bundle update
         choreType = 'today';
       } else {
         choreType = 'future';
@@ -18969,12 +18952,9 @@ var Index = function (_React$Component) {
         username: option.username
       });
     }
-<<<<<<< HEAD
 
     // switches out login, signup, and homepage views
 
-=======
->>>>>>> Rebase package-lock and bundle update
   }, {
     key: 'renderView',
     value: function renderView() {
@@ -36333,11 +36313,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-<<<<<<< HEAD
-=======
-// import Axios for all client files making requests
-
->>>>>>> Rebase package-lock and bundle update
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -36353,12 +36328,8 @@ var App = function (_React$Component) {
       todaysChores: [],
       futureChores: [],
       todayEditIndex: null,
-<<<<<<< HEAD
       futureEditIndex: null,
       currDate: (0, _moment2.default)().format('YYYY-MM-DD')
-=======
-      futureEditIndex: null
->>>>>>> Rebase package-lock and bundle update
     };
     _this.fetchChores = _this.fetchChores.bind(_this);
     _this.handleLogout = _this.props.handleLogout.bind(_this);
@@ -36470,17 +36441,10 @@ var App = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-<<<<<<< HEAD
         null,
         _react2.default.createElement(
           'div',
           { className: 'welcome' },
-=======
-        { className: 'container' },
-        _react2.default.createElement(
-          'div',
-          { className: 'row welcome' },
->>>>>>> Rebase package-lock and bundle update
           _react2.default.createElement(
             'h4',
             null,
@@ -36497,7 +36461,6 @@ var App = function (_React$Component) {
           )
         ),
         _react2.default.createElement(
-<<<<<<< HEAD
           'h1',
           null,
           'TidyUp!'
@@ -36521,45 +36484,6 @@ var App = function (_React$Component) {
           editComponent: this.state.futureEditIndex,
           currDate: this.state.currDate
         })
-=======
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'h1',
-            null,
-            'TidyUp!'
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(_AddChore2.default, { addChore: this.addChore, user_id: this.state.user_id })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(_TodaysChores2.default, {
-            chores: this.state.todaysChores,
-            handleCompletion: this.handleCompletion,
-            editChore: this.editTodayChore,
-            deleteChore: this.deleteChore,
-            submitChore: this.submitChoreEdits,
-            editComponent: this.state.todayEditIndex
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(_FutureChores2.default, {
-            chores: this.state.futureChores,
-            handleCompletion: this.handleCompletion,
-            editChore: this.editFutureChore,
-            deleteChore: this.deleteChore,
-            submitChore: this.submitChoreEdits,
-            editComponent: this.state.futureEditIndex
-          })
-        )
->>>>>>> Rebase package-lock and bundle update
       );
     }
   }]);
@@ -37767,23 +37691,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function TodaysChores(props) {
   return _react2.default.createElement(
     'div',
-<<<<<<< HEAD
     { className: 'todays-chores-list' },
     _react2.default.createElement(
       'h3',
       null,
       'Today'
-=======
-    { className: 'container todays-chores-list' },
-    _react2.default.createElement(
-      'div',
-      { className: 'row' },
-      _react2.default.createElement(
-        'h3',
-        null,
-        'Today'
-      )
->>>>>>> Rebase package-lock and bundle update
     ),
     _react2.default.createElement(
       'div',
@@ -37795,12 +37707,8 @@ function TodaysChores(props) {
             key: index,
             index: index,
             submitChore: props.submitChore,
-<<<<<<< HEAD
             deleteChore: props.deleteChore,
             currDate: props.currDate
-=======
-            deleteChore: props.deleteChore
->>>>>>> Rebase package-lock and bundle update
           });
         }
         return _react2.default.createElement(_TodaysChoreEntry2.default, {
@@ -37808,12 +37716,8 @@ function TodaysChores(props) {
           key: index,
           index: index,
           handleCompletion: props.handleCompletion,
-<<<<<<< HEAD
           editChore: props.editChore,
           currDate: props.currDate
-=======
-          editChore: props.editChore
->>>>>>> Rebase package-lock and bundle update
         });
       })
     )
@@ -37847,7 +37751,6 @@ function TodaysChoreEntry(_ref) {
   var chore = _ref.chore,
       index = _ref.index,
       handleCompletion = _ref.handleCompletion,
-<<<<<<< HEAD
       editChore = _ref.editChore,
       currDate = _ref.currDate;
 
@@ -37858,13 +37761,6 @@ function TodaysChoreEntry(_ref) {
   var isOverdue = '';
   var isCompleted = '';
   var lastCompleted = '';
-=======
-      editChore = _ref.editChore;
-
-  var currDate = (0, _moment2.default)().format('YYYY-MM-DD');
-  var isOverdue = '';
-  var isCompleted = '';
->>>>>>> Rebase package-lock and bundle update
 
   if ((0, _moment2.default)(chore.next_date).isBefore(currDate)) {
     isOverdue = ' overdue';
@@ -37873,11 +37769,6 @@ function TodaysChoreEntry(_ref) {
     isOverdue = '';
     isCompleted = ' completed';
   }
-<<<<<<< HEAD
-=======
-  var choreFreq = '' + chore.frequency.charAt(0).toUpperCase() + chore.frequency.slice(1);
-  var lastCompleted = void 0;
->>>>>>> Rebase package-lock and bundle update
   if (chore.last_date_completed !== null) {
     lastCompleted = 'Last completed ';
     lastCompleted += (0, _moment2.default)(chore.last_date_completed).calendar(null, {
@@ -37893,11 +37784,7 @@ function TodaysChoreEntry(_ref) {
   }
   return _react2.default.createElement(
     'div',
-<<<<<<< HEAD
     { className: 'today-chore-entry' + isOverdue + isCompleted },
-=======
-    { className: 'row today-chore-entry' + isOverdue + isCompleted },
->>>>>>> Rebase package-lock and bundle update
     _react2.default.createElement('input', {
       className: 'done',
       type: 'checkbox',
@@ -40611,23 +40498,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function FutureChores(props) {
   return _react2.default.createElement(
     'div',
-<<<<<<< HEAD
     { className: 'future-chores-list' },
     _react2.default.createElement(
       'h3',
       null,
       'Tomorrow and Beyond'
-=======
-    { className: 'container future-chores-list' },
-    _react2.default.createElement(
-      'div',
-      { className: 'row' },
-      _react2.default.createElement(
-        'h3',
-        null,
-        'Tomorrow and Beyond'
-      )
->>>>>>> Rebase package-lock and bundle update
     ),
     _react2.default.createElement(
       'div',
@@ -40639,12 +40514,8 @@ function FutureChores(props) {
             key: index,
             index: index,
             submitChore: props.submitChore,
-<<<<<<< HEAD
             deleteChore: props.deleteChore,
             currDate: props.currDate
-=======
-            deleteChore: props.deleteChore
->>>>>>> Rebase package-lock and bundle update
           });
         }
         return _react2.default.createElement(_FutureChoreEntry2.default, {
@@ -40652,12 +40523,8 @@ function FutureChores(props) {
           key: index,
           index: index,
           handleCompletion: props.handleCompletion,
-<<<<<<< HEAD
           editChore: props.editChore,
           currDate: props.currDate
-=======
-          editChore: props.editChore
->>>>>>> Rebase package-lock and bundle update
         });
       })
     )
@@ -40693,18 +40560,12 @@ function FutureChoreEntry(_ref) {
       handleCompletion = _ref.handleCompletion,
       editChore = _ref.editChore;
 
-<<<<<<< HEAD
   // future implementation will store frequencies in DB with first letter capitalized.
   // for now, we can capitalize it on the client end
   var choreFreq = '' + chore.frequency.charAt(0).toUpperCase() + chore.frequency.slice(1);
   // dynamic classNames for overdue status and completed status
   var isCompleted = '';
   var lastCompleted = '';
-=======
-  var choreFreq = '' + chore.frequency.charAt(0).toUpperCase() + chore.frequency.slice(1);
-  var isCompleted = '';
-  var lastCompleted = void 0;
->>>>>>> Rebase package-lock and bundle update
 
   if (chore.completed === '1') {
     isCompleted = ' completed';
@@ -40724,11 +40585,7 @@ function FutureChoreEntry(_ref) {
   }
   return _react2.default.createElement(
     'div',
-<<<<<<< HEAD
     { className: 'future-chore-entry' + isCompleted },
-=======
-    { className: 'row future-chore-entry' + isCompleted },
->>>>>>> Rebase package-lock and bundle update
     _react2.default.createElement('input', {
       className: 'done',
       type: 'checkbox',
@@ -40845,10 +40702,6 @@ var AddChore = function (_React$Component) {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
       event.preventDefault();
-<<<<<<< HEAD
-=======
-      console.log('adding a chore');
->>>>>>> Rebase package-lock and bundle update
       var chore = {
         chore_name: this.state.chore_name,
         next_date: this.state.next_date,
@@ -40864,11 +40717,7 @@ var AddChore = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-<<<<<<< HEAD
         { className: 'add-chore' },
-=======
-        { className: 'row add-chore' },
->>>>>>> Rebase package-lock and bundle update
         _react2.default.createElement(
           'form',
           { id: 'add-chore-form', onSubmit: function onSubmit(e) {
@@ -40893,38 +40742,22 @@ var AddChore = function (_React$Component) {
               } },
             _react2.default.createElement(
               'option',
-<<<<<<< HEAD
               { value: 'Daily' },
-=======
-              { value: 'daily' },
->>>>>>> Rebase package-lock and bundle update
               'Daily'
             ),
             _react2.default.createElement(
               'option',
-<<<<<<< HEAD
               { value: 'Weekly' },
-=======
-              { value: 'weekly' },
->>>>>>> Rebase package-lock and bundle update
               'Weekly'
             ),
             _react2.default.createElement(
               'option',
-<<<<<<< HEAD
               { value: 'Bi-weekly' },
-=======
-              { value: 'bi-weekly' },
->>>>>>> Rebase package-lock and bundle update
               'Bi-Weekly'
             ),
             _react2.default.createElement(
               'option',
-<<<<<<< HEAD
               { value: 'Monthly' },
-=======
-              { value: 'monthly' },
->>>>>>> Rebase package-lock and bundle update
               'Monthly'
             )
           ),
@@ -41161,21 +40994,13 @@ var Signup = function (_React$Component) {
         username: this.state.username,
         password: this.state.password
       }).then(function (response) {
-<<<<<<< HEAD
         console.log('this is the server response to signup: ', response);
-=======
-        console.log(response);
->>>>>>> Rebase package-lock and bundle update
         if (response.data.view === 'home') {
           _this2.props.handleSignup(response.data.view);
         }
       }).catch(function (error) {
         console.log(error);
         alert('The username is already taken.');
-<<<<<<< HEAD
-=======
-        // alert('The username is already taken.');
->>>>>>> Rebase package-lock and bundle update
       });
     }
   }, {

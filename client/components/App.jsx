@@ -1,5 +1,4 @@
 import React from 'react';
-// import Axios for all client files making requests
 import axios from 'axios';
 import moment from 'moment';
 
@@ -105,39 +104,31 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row welcome">
+      <div>
+        <div className="welcome">
           <h4>Hi, {this.state.username}!</h4>
           <button className="logout-button" onClick={() => { this.userLogout(); }}>
             Logout
           </button>
         </div>
-        <div className="row">
-          <h1>TidyUp!</h1>
-        </div>
-        <div className="row">
-          <AddChore addChore={this.addChore} user_id={this.state.user_id} />
-        </div>
-        <div className="row">
-          <TodaysChores
-            chores={this.state.todaysChores}
-            handleCompletion={this.handleCompletion}
-            editChore={this.editTodayChore}
-            deleteChore={this.deleteChore}
-            submitChore={this.submitChoreEdits}
-            editComponent={this.state.todayEditIndex}
-          />
-        </div>
-        <div className="row">
-          <FutureChores
-            chores={this.state.futureChores}
-            handleCompletion={this.handleCompletion}
-            editChore={this.editFutureChore}
-            deleteChore={this.deleteChore}
-            submitChore={this.submitChoreEdits}
-            editComponent={this.state.futureEditIndex}
-          />
-        </div>
+        <h1>TidyUp!</h1>
+        <AddChore addChore={this.addChore} user_id={this.state.user_id} />
+        <TodaysChores
+          chores={this.state.todaysChores}
+          handleCompletion={this.handleCompletion}
+          editChore={this.editTodayChore}
+          deleteChore={this.deleteChore}
+          submitChore={this.submitChoreEdits}
+          editComponent={this.state.todayEditIndex}
+        />
+        <FutureChores
+          chores={this.state.futureChores}
+          handleCompletion={this.handleCompletion}
+          editChore={this.editFutureChore}
+          deleteChore={this.deleteChore}
+          submitChore={this.submitChoreEdits}
+          editComponent={this.state.futureEditIndex}
+        />
       </div>
     );
   }

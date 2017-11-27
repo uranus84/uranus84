@@ -24,6 +24,7 @@ class Index extends React.Component {
     });
   }
 
+  // switches out login, signup, and homepage views
   renderView() {
     const { view } = this.state;
     if (view === 'signup') {

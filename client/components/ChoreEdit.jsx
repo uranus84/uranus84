@@ -21,15 +21,14 @@ class ChoreEdit extends React.Component {
     });
   }
 
-  handleDayChange(e) {
-    this.setState({ next_date: moment(e).format('YYYY-MM-DD') });
+  handleDayChange(day) {
+    this.setState({ next_date: moment(day).format('YYYY-MM-DD') });
   }
 
   completedEdits(e) {
     e.preventDefault();
-    const currDate = moment().format('YYYY-MM-DD');
     let choreType = '';
-    if (moment(this.state.next_date).isSameOrBefore(currDate)) {
+    if (moment(this.state.next_date).isSameOrBefore(this.props.currDate)) {
       choreType = 'today';
     } else {
       choreType = 'future';
@@ -46,9 +45,8 @@ class ChoreEdit extends React.Component {
   }
 
   deleteChore() {
-    const currDate = moment().format('YYYY-MM-DD');
     let choreType = '';
-    if (moment(this.state.next_date).isSameOrBefore(currDate)) {
+    if (moment(this.state.next_date).isSameOrBefore(this.props.currDate)) {
       choreType = 'today';
     } else {
       choreType = 'future';

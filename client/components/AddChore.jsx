@@ -25,7 +25,6 @@ class AddChore extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log('adding a chore');
     const chore = {
       chore_name: this.state.chore_name,
       next_date: this.state.next_date,
@@ -37,7 +36,7 @@ class AddChore extends React.Component {
 
   render() {
     return (
-      <div className="row add-chore">
+      <div className="add-chore">
         <form id="add-chore-form" onSubmit={e => this.handleSubmit(e)}>
           Chore:
           <input id="chore_name" type="text" onChange={e => this.handleChange(e)} />
@@ -50,10 +49,10 @@ class AddChore extends React.Component {
           />
           Frequency:
           <select id="frequency" onChange={e => this.handleChange(e)}>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="bi-weekly">Bi-Weekly</option>
-            <option value="monthly">Monthly</option>
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Bi-weekly">Bi-Weekly</option>
+            <option value="Monthly">Monthly</option>
           </select>
           <button className="add-chore-button" type="submit">Add Chore</button>
         </form>

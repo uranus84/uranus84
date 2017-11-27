@@ -1,10 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 
-function TodaysChoreEntry({ chore, index, handleCompletion, editChore }) {
-  const currDate = moment().format('YYYY-MM-DD');
+function TodaysChoreEntry({ chore, index, handleCompletion, editChore, currDate }) {
+  // future implementation will store frequencies in DB with first letter capitalized.
+  // for now, we can capitalize it on the client end
+  const choreFreq = `${chore.frequency.charAt(0).toUpperCase()}${chore.frequency.slice(1)}`;
+  // dynamic classNames for overdue status and completed status
   let isOverdue = '';
   let isCompleted = '';
+  let lastCompleted = '';
 
   if (moment(chore.next_date).isBefore(currDate)) {
     isOverdue = ' overdue';
@@ -13,8 +17,6 @@ function TodaysChoreEntry({ chore, index, handleCompletion, editChore }) {
     isOverdue = '';
     isCompleted = ' completed';
   }
-  const choreFreq = `${chore.frequency.charAt(0).toUpperCase()}${chore.frequency.slice(1)}`;
-  let lastCompleted;
   if (chore.last_date_completed !== null) {
     lastCompleted = 'Last completed ';
     lastCompleted += moment(chore.last_date_completed)
@@ -30,7 +32,7 @@ function TodaysChoreEntry({ chore, index, handleCompletion, editChore }) {
     lastCompleted = 'Never completed';
   }
   return (
-    <div className={`${'row today-chore-entry'}${isOverdue}${isCompleted}`}>
+    <div className={`${'today-chore-entry'}${isOverdue}${isCompleted}`}>
       <input
         className="done"
         type="checkbox"

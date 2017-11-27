@@ -2,9 +2,12 @@ import React from 'react';
 import moment from 'moment';
 
 function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
+  // future implementation will store frequencies in DB with first letter capitalized.
+  // for now, we can capitalize it on the client end
   const choreFreq = `${chore.frequency.charAt(0).toUpperCase()}${chore.frequency.slice(1)}`;
+  // dynamic classNames for overdue status and completed status
   let isCompleted = '';
-  let lastCompleted;
+  let lastCompleted = '';
 
   if (chore.completed === '1') {
     isCompleted = ' completed';
@@ -24,7 +27,7 @@ function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
     lastCompleted = 'Never completed';
   }
   return (
-    <div className={`${'row future-chore-entry'}${isCompleted}`}>
+    <div className={`${'future-chore-entry'}${isCompleted}`}>
       <input
         className="done"
         type="checkbox"

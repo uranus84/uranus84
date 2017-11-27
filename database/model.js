@@ -72,6 +72,8 @@ const updateChores = (req, res) => {
   let freq = '';
 
   return new Promise((resolve, reject) => {
+    // a future implementation should have a custom frequency selector, which will
+    // make this math trickier to implement
     const selectQuery = `SELECT next_date, frequency FROM chores WHERE id = '${req.body.id}'`;
     db.query(selectQuery, (err, chores) => {
       if (err) {

@@ -1,73 +1,88 @@
 body {
-  font-family: Geneva, Tahoma, Verdana, sans-serif;
+  font-family: 'Barlow Semi Condensed', sans-serif;
   font-size: 16px;
+  background-color: #83B5D1;
 }
 
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
+  color: white;
 }
 
 .add-chore, .todays-chores-list, .future-chores-list {
+  color: white;
   width: 70%;
   margin: 0 auto;
+  margin-bottom: 2em;
 }
 
 .welcome {
-  float: right;
-  padding-right: 5%
+  float: left;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: #7F557D;
 }
 
 .logout-button {
-  background-color: white;
-  border: 1px solid gray;
+  background-color: #40376E;
   padding: .5em;
-  /*width: 10%;*/
   border-radius: 5px;
   height: 3em;
   margin: 1em 0;
   font-size: 14px;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #8C87BA;
 }
 
 /* ====== LOGIN / SIGNUP ========== */
 
 .login {
   padding: 2em;
-  border: 1px solid gray;
   border-radius: 10px;
   width: 50%;
-  heigth: 50%;
+  height: 50%;
   position: relative;
   margin: 10% auto;
+  background-color: #7F557D;
 }
 
 .login-container {
-  margin: 2%;
-}
-
-.login input[type="text"], .login input[type="password"] {
-  font-size: 16px;
-  line-height: 1.5em;
+  margin: 5%;
 }
 
 .login-button, .signup-button {
-  background-color: white;
-  border: 1px solid gray;
+  background-color: #40376E;
+  color: white;
   padding: .5em;
   width: 100%;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   height: 3em;
-  margin: 1em 0;
+  margin-top: 2em;
   font-size: 14px;
 }
 
+.login-button:hover, .signup-button:hover {
+  background-color: #8C87BA;  
+}
+
 #username, #password {
-  width: 100%;
-  margin: 0 auto;
+  padding: .5em;
   font-size: 16px;
   line-height: 1.5em;
+  width: 96%;
+  /*margin: .2em auto;*/
 }
 
 /* ====== ADD CHORE ========== */
+
+.add-chore {
+  background-color: #7698B3;
+  border-radius: 10px;
+  padding-left: 2em;
+}
 
 .add-chore input, .add-chore select, .add-chore button, .datepicker {
   margin: .5em;
@@ -79,25 +94,49 @@ input, button {
   border-radius: 5px;
 }
 
-
-
 #chore_name {
   width: 35%;
   padding: .5em;
 }
 
+.add-chore-button {
+  background-color: #40376E;
+  padding: .5em;
+  height: 3em;
+  margin: 1em 0;
+  font-size: 14px;
+  color: white;
+}
+
+.add-chore-button:hover {
+  background-color: #8C87BA;
+}
+
 
 /* ========== CHORE LIST =============*/
+
+
   
 .todays-chores-list, .future-chores-list {
   padding: 2em;
-  border: 1px solid gray;
   border-radius: 10px;
+  background-color: #7698B3;
+}
+
+.today-chore-entry, .future-chore-entry, .edit-chore-entry {
+  margin-top: .5em;
+  background-color: #8C87BA;
+  border-radius: 5px;
+  padding: 1em;
+  color: #40376E;
 }
 
 .chore-name, .chore-last-done, .chore-freq, .chore-due {
   display: inline-block;
-  width: 15%;
+}
+
+.done {
+  margin-right: 2em;
 }
 
 .chore-name {
@@ -109,8 +148,46 @@ input, button {
   width: 20%;
 }
 
+.chore-freq {
+  width: 15%;
+}
+
 .chore-last-done {
   font-size: .75em;
   font-style: italic;
-  font-color: gray;
+  width: 20%;
 }
+
+.completed {
+  text-decoration: line-through;
+  background-color: #99C2D9;
+}
+
+.overdue {
+  background-color: #7F557D;
+  color: white;
+}
+
+/* =============== EDIT CHORE *============== */
+
+.small-button {
+  font-size: .8em;
+}
+
+.delete-button {
+  display: inline-block;
+  float: right;
+}
+
+#edit-chore-form input, #edit-chore-form select {
+  margin: .5em;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+
+
+
+
+
+

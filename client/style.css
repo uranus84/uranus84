@@ -123,7 +123,7 @@ input, button {
   background-color: #7698B3;
 }
 
-.today-chore-entry, .future-chore-entry {
+.today-chore-entry, .future-chore-entry, .edit-chore-entry {
   margin-top: .5em;
   background-color: #8C87BA;
   border-radius: 5px;
@@ -167,3 +167,27 @@ input, button {
   background-color: #7F557D;
   color: white;
 }
+
+/* =============== EDIT CHORE *============== */
+
+.small-button {
+  font-size: .8em;
+}
+
+.delete-button {
+  display: inline-block;
+  float: right;
+}
+
+#edit-chore-form input, #edit-chore-form select {
+  margin: .5em;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+
+
+
+
+
+

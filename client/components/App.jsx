@@ -138,11 +138,6 @@ class App extends React.Component {
             editComponent={this.state.futureEditIndex}
           />
         </div>
-        <div className="button">
-          <button type="button" onClick={() => {this.userLogout()}}>
-            Logout
-          </button>
-        </div>
       </div>
     );
   }

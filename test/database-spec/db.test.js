@@ -2,12 +2,8 @@
  * for these tests to pass. */
 
 const mysql = require('mysql');
-const expect = require('chai').expect;
-const request = require('request');
-
-const modelDB = require('../../database/model.js');
-
-// require the modelDB in order to run those functions
+const { expect } = require('chai');
+const moment = require('moment');
 
 describe('TidyUp', () => {
   let dbConnection;
@@ -43,12 +39,11 @@ describe('TidyUp', () => {
   });
 
   it('should insert chores to the DB', (done) => {
-    // const userQ = 'INSERT INTO users (user_name, password) VALUES ("testUser1", "testPassword1")';
     const choreCols = '(chore_name, next_date, frequency, user_id)';
     const choreVals = '("test chore", "2017-11-27", "daily", 1)';
     const choreQ = `INSERT INTO chores ${choreCols} VALUES ${choreVals}`;
 
-    // insert user
+    // insert user upon which to attach a chore
     dbConnection.query('INSERT INTO users (user_name, password) VALUES ("testUser1", "testPassword1")', () => {
       dbConnection.query(choreQ, () => {
         dbConnection.query('SELECT * FROM chores WHERE user_id = 1', (err, results) => {
@@ -59,35 +54,60 @@ describe('TidyUp', () => {
     });
   });
 
-  // it('should insert the chores to the DB', (done) => {
-  // // post the new chore into the DB
-  //   request({
-  //     method: 'POST',
-  //     uri: 'http://localhost:3000/chores',
-  //     json: {},
-  //   }, () => {
-  //     // Now if we look into the database,we should find the new chore
-  //     const queryString = 'SELECT * FROM chores';
-  //     const queryArgs = [];
-  //     dbPool.query(queryString, queryArgs, (err, results) => {
-  //       // Should have one result:
-  //       expect(results.length).to.equal(1);
-  //       // TODO: If you don't have a column named text, change this test.
-  //       expect(results[0].chore_name).to.equal('');
-  //       done();
-  //     });
-  //   });
-  // });
+  it('should insert multiple chores for one user', (done) => {
+    const choreCols = '(chore_name, next_date, frequency, user_id)';
+    const choreOneVals = '("test chore 1", "2017-11-27", "daily", 1)';
+    const choreTwoVals = '("test chore 2", "2017-11-28", "weekly", 1)';
+    const choreOneQ = `INSERT INTO chores ${choreCols} VALUES ${choreOneVals}`;
+    const choreTwoQ = `INSERT INTO chores ${choreCols} VALUES ${choreTwoVals}`;
 
-  // it('should delete chores from the DB', (done) => {
+    // insert user upon which to attach a chore
+    dbConnection.query('INSERT INTO users (user_name, password) VALUES ("testUser1", "testPassword1")', () => {
+      dbConnection.query(choreOneQ, () => {
+        dbConnection.query(choreTwoQ, () => {
+          dbConnection.query('SELECT * FROM chores WHERE user_id = 1', (err, results) => {
+            expect(results.length).to.equal(2);
+            done();
+          });
+        });
+      });
+    });
+  });
 
-  // });
+  it('should delete chores from the DB', (done) => {
+    const choreCols = '(chore_name, next_date, frequency, user_id)';
+    const choreVals = '("test chore", "2017-11-27", "daily", 1)';
+    const choreQ = `INSERT INTO chores ${choreCols} VALUES ${choreVals}`;
 
-  // it('should update chores upon completion', (done) => {
+    // insert user upon which to attach a chore
+    dbConnection.query('INSERT INTO users (user_name, password) VALUES ("testUser1", "testPassword1")', () => {
+      dbConnection.query(choreQ, () => {
+        dbConnection.query('DELETE FROM chores WHERE chore_name = "test chore"', () => {
+          dbConnection.query('SELECT * FROM chores WHERE user_id = 1', (err, results) => {
+            expect(results.length).to.equal(0);
+            done();
+          });
+        });
+      });
+    });
+  });
 
-  // });
+  it('should be able to update chores', (done) => {
+    const choreCols = '(chore_name, next_date, frequency, user_id)';
+    const choreVals = '("test chore", "2017-11-27", "daily", 1)';
+    const choreQ = `INSERT INTO chores ${choreCols} VALUES ${choreVals}`;
 
-  // it('should edit chores in the DB', (done) => {
-
-  // });
+    // insert user upon which to attach a chore
+    dbConnection.query('INSERT INTO users (user_name, password) VALUES ("testUser1", "testPassword1")', () => {
+      dbConnection.query(choreQ, () => {
+        dbConnection.query('UPDATE chores SET next_date = "2017-11-28", last_date_completed = "2017-11-27" WHERE id = 1', () => {
+          dbConnection.query('SELECT next_date FROM chores WHERE user_id = 1', (err, results) => {
+            const newDate = moment(results[0].next_date).format('YYYY-MM-DD');
+            expect(newDate).to.equal('2017-11-28');
+            done();
+          });
+        });
+      });
+    });
+  });
 });

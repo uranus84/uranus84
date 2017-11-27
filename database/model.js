@@ -84,13 +84,13 @@ const updateChores = (req, res) => {
       }
       freq = chores[0].frequency;
       if (freq === 'daily') {
-        newDate = moment(chores[0].next_date).add(1, 'days').format('YYYY-MM-DD');
+        newDate = moment().add(1, 'days').format('YYYY-MM-DD');
       } else if (freq === 'weekly') {
-        newDate = moment(chores[0].next_date).add(7, 'days').format('YYYY-MM-DD');
+        newDate = moment().add(7, 'days').format('YYYY-MM-DD');
       } else if (freq === 'bi-weekly') {
-        newDate = moment(chores[0].next_date).add(14, 'days').format('YYYY-MM-DD');
+        newDate = moment().add(14, 'days').format('YYYY-MM-DD');
       } else if (freq === 'monthly') {
-        newDate = moment(chores[0].next_date).add(1, 'month').format('YYYY-MM-DD');
+        newDate = moment().add(1, 'month').format('YYYY-MM-DD');
       }
       const updateQuery = `UPDATE chores SET next_date = '${newDate}', last_date_completed = '${moment().format('YYYY-MM-DD')}' WHERE id = '${req.body.id}'`;
 

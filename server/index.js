@@ -30,6 +30,9 @@ app.use(express.static(`${__dirname}./../`));
 // ROUTES
 app.get('/', (req, res) => res.send('Server Message!'));
 
+// future implementations should move the res.json and res.send out from modelDB
+// methods and into the server routes
+
 app.post('/signup', passport.authenticate('local-signup'), (req, res) => {
   console.log('Creating signup response');
   console.log(res.statusCode);

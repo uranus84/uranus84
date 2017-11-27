@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logout-button {
-  background-color: #726E97;
+  background-color: #40376E;
   padding: .5em;
   border-radius: 5px;
   height: 3em;
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logout-button:hover {
-  background-color: #40376E;
+  background-color: #8C87BA;
 }
 
 /* ====== LOGIN / SIGNUP ========== */
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .login-button:hover, .signup-button:hover {
-  background-color: #726E97;  
+  background-color: #8C87BA;  
 }
 
 #username, #password {
@@ -100,7 +100,7 @@ input, button {
 }
 
 .add-chore-button {
-  background-color: #726E97;
+  background-color: #40376E;
   padding: .5em;
   height: 3em;
   margin: 1em 0;
@@ -109,19 +109,13 @@ input, button {
 }
 
 .add-chore-button:hover {
-  background-color: #40376E;
+  background-color: #8C87BA;
 }
 
 
 /* ========== CHORE LIST =============*/
 
-.overdue {
-  font-color: darkred;
-}
 
-.completed {
-  text-decoration: line-through;
-}
   
 .todays-chores-list, .future-chores-list {
   padding: 2em;
@@ -131,9 +125,10 @@ input, button {
 
 .today-chore-entry, .future-chore-entry {
   margin-top: .5em;
-  background-color: #726E97;
+  background-color: #8C87BA;
   border-radius: 5px;
   padding: 1em;
+  color: #40376E;
 }
 
 .chore-name, .chore-last-done, .chore-freq, .chore-due {
@@ -160,6 +155,15 @@ input, button {
 .chore-last-done {
   font-size: .75em;
   font-style: italic;
-  font-color: gray;
   width: 20%;
+}
+
+.completed {
+  text-decoration: line-through;
+  background-color: #99C2D9;
+}
+
+.overdue {
+  background-color: #7F557D;
+  color: white;
 }

@@ -3,7 +3,12 @@ import moment from 'moment';
 
 function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
   const choreFreq = `${chore.frequency.charAt(0).toUpperCase()}${chore.frequency.slice(1)}`;
+  let isCompleted = '';
   let lastCompleted;
+
+  if (chore.completed === '1') {
+    isCompleted = ' completed';
+  }
   if (chore.last_date_completed !== null) {
     lastCompleted = 'Last completed ';
     lastCompleted += moment(chore.last_date_completed)
@@ -19,7 +24,7 @@ function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
     lastCompleted = 'Never completed';
   }
   return (
-    <div className="row future-chore-entry">
+    <div className={`${'row future-chore-entry'}${isCompleted}`}>
       <input
         className="done"
         type="checkbox"
@@ -27,7 +32,7 @@ function FutureChoreEntry({ chore, index, handleCompletion, editChore }) {
         onChange={() => handleCompletion('futureChores', index)}
       />
       <span onClick={() => editChore(index)}>
-        <span className={`${'chore-name'}${chore.completed === '1' ? ' completed' : ''}`}>{chore.chore_name}</span>
+        <span className={`${'chore-name'}${isCompleted}`}>{chore.chore_name}</span>
         <span className="chore-freq">{choreFreq}</span>
         <span className="chore-due">
           Due {moment(chore.next_date)

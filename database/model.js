@@ -4,6 +4,9 @@ const Promise = require('bluebird');
 const moment = require('moment');
 
 // response to client in the JSON data format {todayChores:[ ], futureChores: [ ] }
+
+// future implementations should move the res.json and res.send out from these
+// methods and into the server routes
 const getChores = (req, res, userId) => {
   const currDate = moment().format('YYYY-MM-DD');
   const data = {

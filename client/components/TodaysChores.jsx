@@ -1,6 +1,6 @@
 import React from 'react';
 import TodaysChoreEntry from './TodaysChoreEntry.jsx';
-import TodaysChoreEdit from './TodaysChoreEdit.jsx';
+import ChoreEdit from './ChoreEdit.jsx';
 
 function TodaysChores(props) {
   return (
@@ -12,7 +12,7 @@ function TodaysChores(props) {
         {props.chores.map((chore, index) => {
           if (index === props.editComponent) {
             return (
-              <TodaysChoreEdit
+              <ChoreEdit
                 chore={chore}
                 key={index}
                 index={index}

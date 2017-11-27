@@ -1,6 +1,6 @@
 import React from 'react';
 import FutureChoreEntry from './FutureChoreEntry.jsx';
-import FutureChoreEdit from './FutureChoreEdit.jsx';
+import ChoreEdit from './ChoreEdit.jsx';
 
 function FutureChores(props) {
   return (
@@ -12,7 +12,7 @@ function FutureChores(props) {
         {props.chores.map((chore, index) => {
           if (index === props.editComponent) {
             return (
-              <FutureChoreEdit
+              <ChoreEdit
                 chore={chore}
                 key={index}
                 index={index}

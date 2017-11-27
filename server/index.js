@@ -32,7 +32,7 @@ app.get('/', (req, res) => res.send('Server Message!'));
 
 app.post('/signup', passport.authenticate('local-signup'), (req, res) => {
   console.log('Creating signup response');
-  console.log('USER IS ', JSON.stringify(req.user));
+  console.log(res.statusCode);
   res.send(JSON.stringify({
     view: 'home',
     user_id: req.user.id,
@@ -91,4 +91,4 @@ app.put('/editChore', (req, res) => {
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-module.exports = app;
+module.exports.app = app;

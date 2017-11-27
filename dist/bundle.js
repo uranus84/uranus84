@@ -40994,14 +40994,13 @@ var Signup = function (_React$Component) {
         username: this.state.username,
         password: this.state.password
       }).then(function (response) {
-        console.log(response);
+        console.log('this is the server response to signup: ', response);
         if (response.data.view === 'home') {
           _this2.props.handleSignup(response.data.view);
         }
       }).catch(function (error) {
         console.log(error);
         alert('The username is already taken.');
-        // alert('The username is already taken.');
       });
     }
   }, {
